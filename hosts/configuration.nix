@@ -2,12 +2,15 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./hardware.nix
+#    ./nvidia.nix
 
+    ../system/aliases.nix
     ../system/boot.nix
     ../system/core.nix
+    ../system/fonts.nix
     ../system/network.nix
     ../system/users.nix
-    ../system/fonts.nix
   ];
 
   networking.hostName = "nixSO";
