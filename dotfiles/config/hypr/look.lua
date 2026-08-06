@@ -16,10 +16,12 @@ hl.config({
             enabled      = false,
         },
         blur = {
-            enabled  = true,
-            size     = 3,
-            passes   = 1,
-            vibrancy = 0.1696,
+            enabled           = true,
+            size              = 5,
+            passes            = 2,
+            new_optimizations = true,
+            xray              = true,
+            vibrancy          = 0.1696,
         },
     },
     animations = {
