@@ -1,4 +1,10 @@
 { ... }:
 {
-  xdg.configFile."hypr/hyprland.lua".source = ../../dotfiles/config/hypr/hyprland.lua;
+  xdg.configFile."hypr/hyprland.lua".source   = ../../dotfiles/config/hypr/hyprland.lua;
+  xdg.configFile."hypr/programs.lua".source   = ../../dotfiles/config/hypr/programs.lua;
+  xdg.configFile."hypr/env.lua".source        = ../../dotfiles/config/hypr/env.lua;
+  xdg.configFile."hypr/look.lua".source       = ../../dotfiles/config/hypr/look.lua;
+  xdg.configFile."hypr/input.lua".source      = ../../dotfiles/config/hypr/input.lua;
+  xdg.configFile."hypr/binds.lua".source      = ../../dotfiles/config/hypr/binds.lua;
+  xdg.configFile."hypr/windowrules.lua".source = ../../dotfiles/config/hypr/windowrules.lua;
 }
