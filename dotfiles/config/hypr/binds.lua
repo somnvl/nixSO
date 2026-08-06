@@ -14,8 +14,8 @@ hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + up",   hl.dsp.focus({ workspace = "e-1" }))
 
 for i = 1, 10 do
     local key = i % 10

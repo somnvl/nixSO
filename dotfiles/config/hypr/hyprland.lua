@@ -11,5 +11,6 @@ hl.monitor({
 require("env")
 require("look")
 require("input")
+require("gestures")
 require("binds")
 require("windowrules")
