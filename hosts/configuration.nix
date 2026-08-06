@@ -3,11 +3,12 @@
   imports = [
     ./hardware-configuration.nix
     ./hardware.nix
-#    ./nvidia.nix
+#    ./hardware-nvidia.nix
 
     ../system/aliases.nix
     ../system/boot.nix
     ../system/core.nix
+    ../system/desktop.nix
     ../system/fonts.nix
     ../system/network.nix
     ../system/users.nix

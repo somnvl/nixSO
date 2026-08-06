@@ -2,6 +2,7 @@
 {
   imports = [
     ./aliases.nix
+    ./apps/hyprland.nix
     ./apps/kitty.nix
     ./apps/nautilus.nix
     ./apps/vscode.nix
