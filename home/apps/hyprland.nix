@@ -13,4 +13,5 @@
   xdg.configFile."hypr/binds.lua".source       = ../../dotfiles/config/hypr/binds.lua;
   xdg.configFile."hypr/windowrules.lua".source = ../../dotfiles/config/hypr/windowrules.lua;
   xdg.configFile."hypr/gestures.lua".source    = ../../dotfiles/config/hypr/gestures.lua;
+  xdg.configFile."hypr/autostart.lua".source = ../../dotfiles/config/hypr/autostart.lua;
 }

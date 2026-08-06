@@ -2,12 +2,16 @@
 {
   imports = [
     ./aliases.nix
+    ./cursor.nix
+    ./pkgs.nix
+    ./apps/fastfetch.nix
+    ./apps/git.nix
     ./apps/hyprland.nix
     ./apps/kitty.nix
     ./apps/nautilus.nix
+    ./apps/quickshell.nix
     ./apps/vscode.nix
     ./apps/zsh.nix
-    ./pkgs.nix
   ];
 
   home.username = profile.user.username;
