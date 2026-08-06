@@ -1,4 +1,4 @@
-{ ... }:
+{ profile, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -14,12 +14,12 @@
     ../system/users.nix
   ];
 
-  networking.hostName = "nixSO";
+  networking.hostName = profile.system.hostname;
   networking.networkmanager.enable = true;
 
-  time.timeZone = "Europe/Paris";
-  i18n.defaultLocale = "en_US.UTF-8";
-  console.keyMap = "fr";
+  time.timeZone = profile.system.timeZone;
+  i18n.defaultLocale = profile.system.locale;
+  console.keyMap = profile.system.consoleKeyMap;
 
   nixpkgs.config.allowUnfree = true;
 

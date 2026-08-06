@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, profile, ... }:
 {
-  users.users.so = {
+  users.users.${profile.user.username} = {
     isNormalUser = true;
-    description = "so";
+    description = profile.user.username;
     extraGroups = [ "networkmanager" "wheel" "dialout" ];
     shell = pkgs.zsh;
   };

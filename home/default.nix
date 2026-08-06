@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, profile, ... }:
 {
   imports = [
     ./aliases.nix
@@ -10,8 +10,8 @@
     ./pkgs.nix
   ];
 
-  home.username = "so";
-  home.homeDirectory = "/home/so";
+  home.username = profile.user.username;
+  home.homeDirectory = "/home/${profile.user.username}";
   home.stateVersion = "26.05";
 
   xdg.enable = true;
