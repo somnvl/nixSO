@@ -24,6 +24,13 @@
   nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
+  nix.gc = {
+    automatic = profile.features.gc.automatic;
+    dates = profile.features.gc.dates;
+    options = "--delete-older-than ${profile.features.gc.retention}";
+  };
+  nix.optimise.automatic = profile.features.gc.optimiseAutomatic;
 
   # stateVersion must match the NixOS version you first installed with.
   # Do not change this after the initial installation

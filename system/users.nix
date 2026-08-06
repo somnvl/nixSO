@@ -1,9 +1,10 @@
-{ pkgs, profile, ... }:
+{ pkgs, lib, profile, ... }:
 {
   users.users.${profile.user.username} = {
     isNormalUser = true;
     description = profile.user.username;
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" ]
+      ++ lib.optional profile.features.docker "docker";
     shell = pkgs.zsh;
   };
 

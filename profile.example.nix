@@ -38,4 +38,36 @@
     # address private) instead of your real one, to keep it out of a public repo.
     email = "your-id+your-username@users.noreply.github.com";
   };
+
+  # Pointer cursor — single source of truth shared between home-manager's
+  # cursor package (cursor.nix) and Hyprland's env vars (hyprland.nix),
+  # so the two can never drift out of sync.
+  cursor = {
+    theme = "miku";
+    size = 24;
+  };
+
+  # Optional system features/services, toggled on or off — meant to be
+  # flipped from a future settings UI without touching the modules below.
+  features = {
+    docker = true;
+    # virtualbox = false;
+    # steam = false;
+
+    # Automatic Nix garbage collection + store optimisation.
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      retention = "30d";
+      optimiseAutomatic = true;
+    };
+
+    # Dev toolchains in home.packages, per stack — off by default so
+    # forking this repo doesn't pull in tools you don't need.
+    devTools  = true;  # gnumake, ripgrep, fd — generic dev CLI tools
+    cDev      = true;  # clang, norminette, valgrind, gdb, SDL2...
+    pythonDev = true;  # python314 + common libs, ruff, pyright, black
+    goDev     = true;  # go, gopls, gotools
+    wailsDev  = true;  # go + node + GTK/webkit dev headers
+  };
 }
