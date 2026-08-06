@@ -37,4 +37,14 @@
     goDev     = true;
     wailsDev  = true;
   };
+
+  # Enable if you have the same hybrid AMD iGPU + Nvidia dGPU laptop setup
+  # (PRIME sync/offload). Leave false otherwise — the bus IDs below are
+  # specific to one exact machine, not safe to apply blindly elsewhere.
+  # Find yours with `lspci | grep -E "VGA|3D"`.
+  nvidiaPrime = {
+    enable = true;
+    amdgpuBusId = "PCI:100:0:0";
+    nvidiaBusId = "PCI:1:0:0";
+  };
 }

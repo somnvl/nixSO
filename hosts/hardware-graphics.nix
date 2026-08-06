@@ -1,6 +1,6 @@
-{ config, ... }:
+{ config, lib, profile, ... }:
 
-{
+lib.mkIf profile.nvidiaPrime.enable {
   environment.systemPackages = [
     config.hardware.nvidia.package
   ];
@@ -23,8 +23,8 @@
         enableOffloadCmd = true;
       };
 
-      amdgpuBusId = "PCI:100:0:0";
-      nvidiaBusId = "PCI:1:0:0";
+      amdgpuBusId = profile.nvidiaPrime.amdgpuBusId;
+      nvidiaBusId = profile.nvidiaPrime.nvidiaBusId;
     };
   };
 
