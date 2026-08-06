@@ -1,5 +1,10 @@
 { config, ... }:
 {
+  imports = [
+    ./apps/zsh.nix
+    ./apps/aliases.nix
+  ];
+
   home.username = "so";
   home.homeDirectory = "/home/so";
   home.stateVersion = "26.05";
