@@ -1,11 +1,8 @@
 { ... }:
 {
   programs.zsh.shellAliases = {
-    # WORK
-    ccc = "cc -Wall -Wextra -Werror";
-    vg = "valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes";
-    p3 = "python3";
-    cx = "chmod +x";
+    # SESSION
+    logout = "hyprctl dispatch exit";
 
     # SHELL
     ll  = "ls -lah --color=auto";
@@ -13,5 +10,11 @@
 
     wifi = "sudo nmtui";
     bluetooth = "sudo bluetui";
+  
+    # WORK
+    ccc = "cc -Wall -Wextra -Werror";
+    vg = "valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes";
+    p3 = "python3";
+    cx = "chmod +x";
   };
 }

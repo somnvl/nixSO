@@ -12,6 +12,7 @@
     ../system/docker.nix
     ../system/fonts.nix
     ../system/network.nix
+    ../system/sddm.nix
     ../system/users.nix
   ];
 
