@@ -2,8 +2,8 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./hardware-graphics.nix
     ./hardware.nix
-#    ./hardware-nvidia.nix
 
     ../system/aliases.nix
     ../system/boot.nix
