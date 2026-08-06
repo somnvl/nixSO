@@ -12,10 +12,10 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 
-hl.bind(mainMod .. " + left",  function() hl.dispatch(hl.dsp.layout("focus l")) end)
-hl.bind(mainMod .. " + right", function() hl.dispatch(hl.dsp.layout("focus r")) end)
-hl.bind(mainMod .. " + down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + up",   hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
 for i = 1, 10 do
     local key = i % 10
