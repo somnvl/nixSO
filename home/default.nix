@@ -1,8 +1,12 @@
 { config, ... }:
 {
   imports = [
+    ./aliases.nix
+    ./apps/kitty.nix
+    ./apps/nautilus.nix
+    ./apps/vscode.nix
     ./apps/zsh.nix
-    ./apps/aliases.nix
+    ./pkgs.nix
   ];
 
   home.username = "so";
