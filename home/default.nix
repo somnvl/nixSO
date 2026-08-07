@@ -8,6 +8,7 @@
     ./apps/fastfetch.nix
     ./apps/git.nix
     ./apps/hyprland.nix
+    ./apps/hyprlock.nix
     ./apps/kitty.nix
     ./apps/nautilus.nix
     ./apps/quickshell.nix
