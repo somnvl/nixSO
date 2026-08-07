@@ -9,6 +9,8 @@
   home.packages = with pkgs; [
     # --- Daily desktop use (always installed) ---
     google-chrome
+
+    hyprshutdown
   ]
   # Generic dev CLI tools (useful for any language/project).
   ++ lib.optionals profile.features.devTools (with pkgs; [
