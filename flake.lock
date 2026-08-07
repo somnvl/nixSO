@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "assets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785694721,
+        "narHash": "sha256-AfAeDmQ1JYlojxlpE8lp60VC7FRJDHgbHBejay2cLDg=",
+        "owner": "somnvl",
+        "repo": "nixSO.assets",
+        "rev": "5afe5c127fa8346c5f6e5494407ce96395386dd1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "somnvl",
+        "repo": "nixSO.assets",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -38,6 +54,7 @@
     },
     "root": {
       "inputs": {
+        "assets": "assets",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }
