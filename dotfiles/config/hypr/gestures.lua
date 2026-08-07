@@ -1,8 +1,3 @@
--- Everything touchpad-related lives here: hardware behavior, the legacy
--- swipe tuning knobs, custom 1:1 gestures, and the scrolloverview plugin's
--- own gesture. hl.config() calls merge, so splitting input.touchpad out of
--- input.lua into this file doesn't change what it configures.
-
 hl.config({
     input = {
         touchpad = {
@@ -16,14 +11,10 @@ hl.config({
         },
     },
 
-    -- Legacy touchpad tuning knobs (workspace_swipe_* family). The
-    -- workspace_swipe on/off toggle itself was removed in Hyprland 0.51,
-    -- superseded by the hl.gesture() system below — these sub-fields may
-    -- now be dead weight, worth revisiting.
     gestures = {
         workspace_swipe_distance = 400,
         workspace_swipe_invert = true,
-        workspace_swipe_min_speed_to_force = 30,
+        workspace_swipe_min_speed_to_force = 20,
         workspace_swipe_direction_lock = true,
         workspace_swipe_direction_lock_threshold = 10,
         workspace_swipe_create_new = true,
