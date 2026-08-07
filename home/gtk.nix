@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  mactahoe-icon-theme = pkgs.callPackage ../packages/mactahoe-icon-theme.nix { };
+  mactahoe-icon-theme = pkgs.callPackage ./packages/mactahoe-icon-theme.nix { };
 in
 {
   home.packages = [ mactahoe-icon-theme ];
