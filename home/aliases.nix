@@ -2,7 +2,7 @@
 {
   programs.zsh.shellAliases = {
     # SESSION
-    logout = "hyprctl dispatch exit";
+    logout = "hyprshutdown";
 
     # SHELL
     ll  = "ls -lah --color=auto";
