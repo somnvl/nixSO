@@ -11,6 +11,9 @@
     google-chrome
 
     hyprshutdown
+    hyprshot
+      grim
+      slurp
   ]
   # Generic dev CLI tools (useful for any language/project).
   ++ lib.optionals profile.features.devTools (with pkgs; [

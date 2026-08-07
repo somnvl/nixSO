@@ -34,5 +34,7 @@
     videos = "${config.home.homeDirectory}/Videos";
   };
 
+  home.file."Pictures/screenshots/.keep".text = "";
+
   programs.home-manager.enable = true;
 }
