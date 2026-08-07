@@ -15,9 +15,14 @@
     };
 
     spicetify.url = "github:Gerg-L/spicetify-nix";
+
+    nautilus-my-computer = {
+      url = "github:yannmasoch/nautilus-my-computer?dir=packaging/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, assets, spicetify, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, assets, spicetify, nautilus-my-computer, ... }@inputs:
     let
       system = "x86_64-linux";
 
