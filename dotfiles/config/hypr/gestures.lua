@@ -16,8 +16,12 @@ hl.config({
         },
     },
 
+    -- Legacy touchpad tuning knobs (workspace_swipe_* family). The
+    -- workspace_swipe on/off toggle itself was removed in Hyprland 0.51,
+    -- superseded by the hl.gesture() system below — these sub-fields may
+    -- now be dead weight, worth revisiting.
     gestures = {
-        workspace_swipe_distance = 400,
+        workspace_swipe_distance = 200,
         workspace_swipe_invert = true,
         workspace_swipe_min_speed_to_force = 30,
         workspace_swipe_direction_lock = true,
@@ -26,46 +30,62 @@ hl.config({
     },
 })
 
--- 3 fingers up/down: change workspace. Discrete dispatcher instead of the
--- built-in "workspace" gesture action — that one drives Hyprland's live-swipe
--- follow renderer, hardcoded horizontal regardless of direction (see
--- hyprland-plugins#469, #562 — same limitation, unfixable for now). This
--- fires once on gesture completion instead, using the normal "workspaces"
--- animation (slidevert, see look.lua) for the transition.
+-- Discrete dispatcher gestures instead of the built-in "workspace" action:
+-- the built-in one drives Hyprland's live-swipe follow renderer, which is
+-- hardcoded horizontal regardless of direction (see hyprland-plugins#469,
+-- #562 — same limitation, unfixable for now). These fire once on gesture
+-- completion instead, using the normal "workspaces" animation (slidevert,
+-- see look.lua) for the transition.
 --
--- e+1 / e-1 already jump to (and create, if needed) the next/previous empty
--- workspace natively, so no extra "create new" handling is needed here.
+-- e+1 / e-1 only cycle among already-open workspaces and silently do
+-- nothing when there's just one — r+1 / r-1 creates a new one dynamically
+-- when there's no empty workspace to land on.
+--
+-- Guarded against the scrolloverview submap: while the overview is open,
+-- its own 2-finger scroll already handles navigation live — firing this
+-- discrete jump on top of that felt jarring and inconsistent.
 hl.gesture({
     fingers = 3,
     direction = "up",
-    action = function() hl.dispatch(hl.dsp.focus({ workspace = "e+1" })) end,
+    action = function()
+        if hl.get_current_submap() == "scrolloverview" then return end
+        hl.dispatch(hl.dsp.focus({ workspace = "r+1" }))
+    end,
 })
 hl.gesture({
     fingers = 3,
     direction = "down",
-    action = function() hl.dispatch(hl.dsp.focus({ workspace = "e-1" })) end,
+    action = function()
+        if hl.get_current_submap() == "scrolloverview" then return end
+        hl.dispatch(hl.dsp.focus({ workspace = "r-1" }))
+    end,
 })
 
--- 3 fingers left/right: scroll/navigate between columns within the same
--- workspace (scrolling layout). "focus l/r" moves the view, unlike
--- "move ±col" which would relocate the focused window itself.
 hl.gesture({
     fingers = 3,
     direction = "right",
-    action = function() hl.dispatch(hl.dsp.layout("focus r")) end,
+    action = function()
+        if hl.get_current_submap() == "scrolloverview" then return end
+        hl.dispatch(hl.dsp.layout("focus l"))
+    end,
 })
 hl.gesture({
     fingers = 3,
     direction = "left",
-    action = function() hl.dispatch(hl.dsp.layout("focus l")) end,
+    action = function()
+        if hl.get_current_submap() == "scrolloverview" then return end
+        hl.dispatch(hl.dsp.layout("focus r"))
+    end,
 })
 
--- 4 fingers vertical: toggle the scrolloverview plugin's overview.
+-- scrolloverview plugin's own gesture + its sensitivity tuning (the rest of
+-- the plugin's config — scale, layout, wallpaper, blur, shadow — is visual/
+-- behavioral, not touchpad-related, so it stays in scrolloverview.lua).
 if hl.plugin and hl.plugin.scrolloverview then
     hl.config({
         plugin = {
             scrolloverview = {
-                gesture_distance = 400, -- default 200 felt too sensitive
+                gesture_distance = 200, -- default 200 felt too sensitive
             },
         },
     })

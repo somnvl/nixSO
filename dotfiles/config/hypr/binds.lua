@@ -49,3 +49,4 @@ if hl.plugin and hl.plugin.scrolloverview then
         hl.plugin.scrolloverview.overview("toggle")
     end)
 end
+
