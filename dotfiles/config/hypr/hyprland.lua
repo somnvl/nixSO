@@ -1,6 +1,3 @@
--- Split into multiple files (see wiki: Configuring/Start).
--- Each require() is its own Lua scope — locals don't leak between files.
-
 hl.monitor({
     output   = "",
     mode     = "preferred",

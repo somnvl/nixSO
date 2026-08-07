@@ -43,3 +43,9 @@ hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = tr
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
+
+if hl.plugin and hl.plugin.scrolloverview then
+    hl.bind(mainMod .. " + Tab", function()
+        hl.plugin.scrolloverview.overview("toggle")
+    end)
+end
