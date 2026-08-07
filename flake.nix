@@ -9,21 +9,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Heavy/binary assets (cursor themes, etc.) not suited to living in
-    # this repo directly — see github:somnvl/nixSO.assets.
     assets = {
       url = "github:somnvl/nixSO.assets";
       flake = false;
     };
+
+    spicetify.url = "github:Gerg-L/spicetify-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, assets, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, assets, spicetify, ... }@inputs:
     let
       system = "x86_64-linux";
 
-      # Personal settings (hostname, username, git identity, locale...).
-      # Falls back to the example file so the flake still evaluates for
-      # anyone who hasn't created their own profile.nix yet.
       profile =
         if builtins.pathExists ./profile.nix
         then import ./profile.nix
@@ -40,6 +37,9 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs profile assets; };
+            home-manager.sharedModules = [
+              spicetify.homeManagerModules.default
+            ];
             home-manager.users.${profile.user.username} = import ./home;
           }
         ];

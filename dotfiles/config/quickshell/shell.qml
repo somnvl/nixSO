@@ -32,7 +32,7 @@ ShellRoot {
 
                 Text {
                     id: clock
-                    color: "white"
+                    color: "#c0caf5"
                     font.pixelSize: 12
                     text: Qt.formatDateTime(new Date(), "HH:mm")
 
@@ -49,7 +49,7 @@ ShellRoot {
                 }
 
                 Text {
-                    color: "white"
+                    color: "#c0caf5"
                     font.pixelSize: 12
                     text: {
                         const battery = UPower.displayDevice

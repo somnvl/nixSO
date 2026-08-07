@@ -11,6 +11,7 @@
     ./apps/kitty.nix
     ./apps/nautilus.nix
     ./apps/quickshell.nix
+    ./apps/vesktop.nix    
     ./apps/vscode.nix
     ./apps/zsh.nix
   ];
