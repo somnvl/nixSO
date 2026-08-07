@@ -1,6 +1,6 @@
 { pkgs, profile, ... }:
 let
-  scrolloverview = pkgs.callPackage ./packages/hyprland-scroll-overview.nix { };
+  scrolloverview = pkgs.callPackage ../packages/hyprland-scroll-overview.nix { };
 in
 {
   xdg.configFile."hypr/env.lua".text = ''
