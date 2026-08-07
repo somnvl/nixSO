@@ -30,20 +30,6 @@ hl.config({
     },
 })
 
--- Discrete dispatcher gestures instead of the built-in "workspace" action:
--- the built-in one drives Hyprland's live-swipe follow renderer, which is
--- hardcoded horizontal regardless of direction (see hyprland-plugins#469,
--- #562 — same limitation, unfixable for now). These fire once on gesture
--- completion instead, using the normal "workspaces" animation (slidevert,
--- see look.lua) for the transition.
---
--- e+1 / e-1 only cycle among already-open workspaces and silently do
--- nothing when there's just one — r+1 / r-1 creates a new one dynamically
--- when there's no empty workspace to land on.
---
--- Guarded against the scrolloverview submap: while the overview is open,
--- its own 2-finger scroll already handles navigation live — firing this
--- discrete jump on top of that felt jarring and inconsistent.
 hl.gesture({
     fingers = 3,
     direction = "up",
@@ -63,19 +49,8 @@ hl.gesture({
 
 hl.gesture({
     fingers = 3,
-    direction = "right",
-    action = function()
-        if hl.get_current_submap() == "scrolloverview" then return end
-        hl.dispatch(hl.dsp.layout("focus l"))
-    end,
-})
-hl.gesture({
-    fingers = 3,
-    direction = "left",
-    action = function()
-        if hl.get_current_submap() == "scrolloverview" then return end
-        hl.dispatch(hl.dsp.layout("focus r"))
-    end,
+    direction = "horizontal",
+    action = "scroll_move",
 })
 
 -- scrolloverview plugin's own gesture + its sensitivity tuning (the rest of
