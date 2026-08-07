@@ -1,15 +1,18 @@
-local mainMod = "SUPER"
-
 if hl.plugin and hl.plugin.scrolloverview then
-    hl.plugin.scrolloverview.configure({
-        scale = 0.5,
-        layout = "vertical",
-        workspace_gap = 50,
-        wallpaper = 0,
-        blur = true,
+    hl.config({
+        plugin = {
+            scrolloverview = {
+                gesture_distance = 400,
+                scale = 0.5,
+                workspace_gap = 100,
+                layout = "vertical",
+                wallpaper = 0,
+                blur = true,
 
-        shadow = {
-            enabled = false,
+                shadow = {
+                    enabled = false,
+                },
+            },
         },
     })
 
@@ -18,7 +21,7 @@ if hl.plugin and hl.plugin.scrolloverview then
         direction = "vertical",
     })
 
-    hl.bind(mainMod .. " + Tab", function()
+    hl.bind("SUPER + Tab", function()
         hl.plugin.scrolloverview.overview("toggle")
     end)
 end

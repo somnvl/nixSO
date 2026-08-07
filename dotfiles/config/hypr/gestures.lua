@@ -1,5 +1,10 @@
 hl.gesture({
     fingers = 3,
-    direction = "vertical",
-    action = "workspace",
+    direction = "up",
+    action = function() hl.dispatch(hl.dsp.focus({ workspace = "e+1" })) end,
+})
+hl.gesture({
+    fingers = 3,
+    direction = "down",
+    action = function() hl.dispatch(hl.dsp.focus({ workspace = "e-1" })) end,
 })
