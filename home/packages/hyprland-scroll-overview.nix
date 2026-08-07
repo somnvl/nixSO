@@ -14,7 +14,7 @@ hyprlandPlugins.mkHyprlandPlugin {
     owner = "yayuuu";
     repo = "hyprland-scroll-overview";
     rev = "d1fc8d4ee35cdc597b6f3b4c8b93acebc5d5467f";
-    hash = lib.fakeHash;
+    hash = "sha256-NgpsyCvLvuPxqN3L2ObJ/TWfrfl/jyAGncSPectIvis=";
   };
 
   buildInputs = [ pkgs.lua5_4 ];
