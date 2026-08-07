@@ -5,7 +5,7 @@ if hl.plugin and hl.plugin.scrolloverview then
         scale = 0.5,
         layout = "vertical",
         workspace_gap = 100,
-        wallpaper = 0            -- 0 = global wallpaper only, matches swaybg setup
+        wallpaper = 0,
         blur = true,
 
         shadow = {
