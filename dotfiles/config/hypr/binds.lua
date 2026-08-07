@@ -29,6 +29,7 @@ hl.bind(mainMod .. " + CTRL + L", hl.dsp.layout("swapcol r"))
 for i = 1, 10 do
     local key = i % 10
     hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+
     hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.layout("movecoltoworkspace " .. i))
 end
 
@@ -43,12 +44,38 @@ hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + S",       hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + CTRL + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
-hl.bind(mainMod .. " + R",         hl.dsp.layout("colresize +conf"))
-hl.bind(mainMod .. " + SHIFT + R", hl.dsp.layout("colresize -conf"))
+local colWidths = {0.333, 0.5, 0.667}
+local colWidthIdx = 2
+local isFullWidth = false
 
-hl.bind(mainMod .. " + F",         hl.dsp.layout("fit active"))
-hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ layout_aware = true }))
-hl.bind(mainMod .. " + CTRL + F",  hl.dsp.layout("colresize 1.0"))
+local function applyColWidth()
+    hl.dispatch(hl.dsp.layout("colresize " .. colWidths[colWidthIdx]))
+end
+
+hl.bind(mainMod .. " + R", function()
+    isFullWidth = false
+    colWidthIdx = (colWidthIdx % #colWidths) + 1
+    applyColWidth()
+end)
+
+hl.bind(mainMod .. " + SHIFT + R", function()
+    isFullWidth = false
+    colWidthIdx = colWidthIdx - 1
+    if colWidthIdx < 1 then colWidthIdx = #colWidths end
+    applyColWidth()
+end)
+
+hl.bind(mainMod .. " + F", function()
+    if isFullWidth then
+        applyColWidth()
+    else
+        hl.dispatch(hl.dsp.layout("colresize 1.0"))
+    end
+    isFullWidth = not isFullWidth
+end)
+
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ layout_aware = false }))
+hl.bind(mainMod .. " + CTRL + F",  hl.dsp.layout("fit expand"))
 
 hl.bind(mainMod .. " + CTRL + C", hl.dsp.layout("fit visible"))
 

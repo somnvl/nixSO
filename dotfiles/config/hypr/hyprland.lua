@@ -7,6 +7,7 @@ hl.monitor({
 
 require("env")
 require("look")
+require("animations")
 require("input")
 require("gestures")
 require("binds")
