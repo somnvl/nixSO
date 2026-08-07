@@ -11,7 +11,7 @@ in
 
   xdg.configFile."hypr/autostart.lua".text = ''
     hl.on("hyprland.start", function()
-        hl.plugin.load("${scrolloverview}/lib/libscrolloverview.so")
+        hl.exec_cmd("hyprctl plugin load ${scrolloverview}/lib/libscrolloverview.so")
         hl.exec_cmd("quickshell")
     end)
   '';
