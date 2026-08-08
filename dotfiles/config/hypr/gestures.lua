@@ -51,20 +51,22 @@ if hl.plugin and hl.plugin.scrolloverview then
     })
 end
 
-hl.define_submap("scrolloverview", function()
-    hl.bind("left",   hl.plugin.scrolloverview.navigate("left"))
-    hl.bind("right",  hl.plugin.scrolloverview.navigate("right"))
-    hl.bind("up",     hl.plugin.scrolloverview.navigate("up"))
-    hl.bind("down",   hl.plugin.scrolloverview.navigate("down"))
-    hl.bind("return", hl.plugin.scrolloverview.overview("select"))
-    hl.bind("escape", hl.plugin.scrolloverview.overview("off"))
-    hl.bind("mouse:272", function()
-        hl.plugin.scrolloverview.overview("select")
-        hl.plugin.scrolloverview.window("select")
-        hl.plugin.scrolloverview.overview("off")
-    end, { mouse = true })
-    hl.bind("mouse:274", hl.plugin.scrolloverview.window("close"), { mouse = true })
-end)
+if hl.plugin and hl.plugin.scrolloverview then
+    hl.define_submap("scrolloverview", function()
+        hl.bind("left",   hl.plugin.scrolloverview.navigate("left"))
+        hl.bind("right",  hl.plugin.scrolloverview.navigate("right"))
+        hl.bind("up",     hl.plugin.scrolloverview.navigate("up"))
+        hl.bind("down",   hl.plugin.scrolloverview.navigate("down"))
+        hl.bind("return", hl.plugin.scrolloverview.overview("select"))
+        hl.bind("escape", hl.plugin.scrolloverview.overview("off"))
+        hl.bind("mouse:272", function()
+            hl.plugin.scrolloverview.overview("select")
+            hl.plugin.scrolloverview.window("select")
+            hl.plugin.scrolloverview.overview("off")
+        end, { mouse = true })
+        hl.bind("mouse:274", hl.plugin.scrolloverview.window("close"), { mouse = true })
+    end)
+end
 
 hl.on("keybinds.submap", function(submapName)
     if submapName == "scrolloverview" then
