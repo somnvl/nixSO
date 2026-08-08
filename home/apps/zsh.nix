@@ -28,7 +28,7 @@
 
       logout() {
         if [[ -n "$NIRI_SOCKET" ]]; then
-          niri msg action quit skip-confirmation=true
+          niri msg action quit --skip-confirmation
         else
           uwsm stop
         fi
