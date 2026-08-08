@@ -26,7 +26,7 @@ hl.gesture({
     fingers = 3,
     direction = "vertical",
     action = "workspace",
-    scale = 0.8,
+    scale = 0.9,
 })
 
 hl.gesture({

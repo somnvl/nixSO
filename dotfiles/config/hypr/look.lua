@@ -38,3 +38,7 @@ hl.config({
         background_color = 0xff000000,
     },
 })
+
+for i = 1, 10 do
+    hl.workspace_rule({ workspace = tostring(i), persistent = true })
+end

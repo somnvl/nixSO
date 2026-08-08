@@ -27,19 +27,19 @@ hl.bind(mainMod .. " + CTRL + H", hl.dsp.layout("swapcol l"))
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.layout("swapcol r"))
 
 for i = 1, 10 do
-    local key = i % 10
-    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+    local code = i + 9  -- X11 keycode = evdev + 8 : KEY_1=10 ... KEY_9=18, KEY_0=19
+    hl.bind(mainMod .. " + code:" .. code, hl.dsp.focus({ workspace = i }))
 
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.layout("movecoltoworkspace " .. i))
+    hl.bind(mainMod .. " + SHIFT + code:" .. code, hl.dsp.layout("movecoltoworkspace " .. i))
 end
 
-hl.bind(mainMod .. " + Page_Down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + Page_Up",   hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + U", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + I", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + Page_Down", hl.dsp.focus({ workspace = "r+1" }))
+hl.bind(mainMod .. " + Page_Up",   hl.dsp.focus({ workspace = "r-1" }))
+hl.bind(mainMod .. " + U", hl.dsp.focus({ workspace = "r+1" }))
+hl.bind(mainMod .. " + I", hl.dsp.focus({ workspace = "r-1" }))
 
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "r+1" }))
+hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "r-1" }))
 
 hl.bind(mainMod .. " + S",       hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + CTRL + S", hl.dsp.window.move({ workspace = "special:magic" }))
