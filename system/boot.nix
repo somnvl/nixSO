@@ -3,6 +3,10 @@
   boot.kernelParams = [
     "quiet"
     "splash"
+    # Disables AMD Panel Self Refresh (PSR) — known to cause invisible
+    # (not captured by screen recording) flicker/corruption on some AMD
+    # laptop panels
+    "amdgpu.dcdebugmask=0x10"
   ];
 
   boot = {
