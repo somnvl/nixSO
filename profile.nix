@@ -62,8 +62,8 @@
   };
 
   workarounds = {
-    disablePsr = true;
-    gtk4Renderer = true;
-    niriScanoutWorkarounds = true;
+    disablePsr = false;
+    gtk4Renderer = false;
+    niriScanoutWorkarounds = false;
   };
 }
