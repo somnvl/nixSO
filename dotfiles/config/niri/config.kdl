@@ -1,5 +1,9 @@
 prefer-no-csd
 
+debug {
+    wait-for-frame-completion-before-queueing
+}
+
 // This config is in the KDL format: https://kdl.dev
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
@@ -342,17 +346,17 @@ window-rule {
 
 window-rule {
     match app-id="code"
-    opacity 1
+    opacity 1.0
 }
 
 window-rule {
     match app-id="kitty"
-    opacity 1
+    opacity 1.0
 }
 
 window-rule {
     match app-id="org.gnome.Nautilus"
-    opacity 1
+    opacity 1.0
 }
 
 // Example: block out two password managers from screen capture.
