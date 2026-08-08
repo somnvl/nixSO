@@ -6,6 +6,7 @@
     acpi
     alsa-utils
     mesa-demos
+    libinput
   ];
 
   hardware.bluetooth.enable = true;

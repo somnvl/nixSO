@@ -4,7 +4,7 @@
     cursor {
         xcursor-theme "${profile.cursor.theme}"
         xcursor-size ${toString profile.cursor.size}
-        hide-after-inactive-ms 15000
+        hide-after-inactive-ms 10000
     }
   '';
 
@@ -12,6 +12,8 @@
     debug {
         render-drm-device "${profile.nvidiaPrime.renderDevice}"
         wait-for-frame-completion-before-queueing
+        disable-direct-scanout
+        disable-cursor-plane
     }
   '';
 

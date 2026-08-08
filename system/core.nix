@@ -6,6 +6,7 @@
     pciutils
     unzip
     tree
+    btop
   ];
 
   programs.zsh.enable = true;

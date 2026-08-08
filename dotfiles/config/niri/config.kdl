@@ -107,7 +107,7 @@ input {
 // into outputs.kdl, not hardcoded here — keeps this file generic/public.
 // Run `niri msg outputs` to find your connector names/modes.
 include optional=true "outputs.kdl"
-
+include optional=true "gpu.kdl"
 include "cursor.kdl"
 
 

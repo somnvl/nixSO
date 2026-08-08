@@ -68,8 +68,7 @@
   ])
   # C toolchain.
   ++ lib.optionals profile.features.cDev (with pkgs; [
-    clang
-    clang-tools
+    gcc
     glib
     glibc.dev
     stdenv.cc.cc.lib
@@ -99,11 +98,5 @@
       PKG_CONFIG_PATH = lib.concatMapStringsSep ":"
         (p: "${p}/lib/pkgconfig:${p}/share/pkgconfig") guiDevPkgs
         + ":$PKG_CONFIG_PATH";
-    }))
-    # 42 requires clang — set globally for simplicity for now. Could move
-    # to a scoped dev shell instead if it ever conflicts with a non-42
-    # project expecting gcc.
-    // (lib.optionalAttrs profile.features.cDev {
-      CC = "clang";
-    });
+    }));
 }

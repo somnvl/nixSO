@@ -42,13 +42,13 @@
     enable = true;
     amdgpuBusId = "PCI:100:0:0";
     nvidiaBusId = "PCI:1:0:0";
-    renderDevice = "/dev/dri/renderD128";
+    renderDevice = "/dev/dri/renderD129";
   };
 
   displays = [
     {
       connector = "eDP-1";
-      scale = 1.33;
+      scale = 1.25;
     }
   ];
 }
