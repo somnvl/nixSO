@@ -1,4 +1,4 @@
 { profile, ... }:
 {
-  virtualisation.docker.enable = profile.features.docker;
+  virtualisation.docker.enable = profile.dev.docker;
 }

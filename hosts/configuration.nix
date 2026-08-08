@@ -28,11 +28,11 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   nix.gc = {
-    automatic = profile.features.gc.automatic;
-    dates = profile.features.gc.dates;
-    options = "--delete-older-than ${profile.features.gc.retention}";
+    automatic = profile.system.nix.gc.automatic;
+    dates = profile.system.nix.gc.dates;
+    options = "--delete-older-than ${profile.system.nix.gc.retention}";
   };
-  nix.optimise.automatic = profile.features.gc.optimiseAutomatic;
+  nix.optimise.automatic = profile.system.nix.gc.optimiseAutomatic;
 
   # stateVersion must match the NixOS version you first installed with.
   # Do not change this after the initial installation

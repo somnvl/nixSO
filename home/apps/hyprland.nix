@@ -4,9 +4,9 @@ let
 in
 {
   xdg.configFile."hypr/env.lua".text = ''
-    hl.env("XCURSOR_THEME", "${profile.cursor.theme}")
-    hl.env("XCURSOR_SIZE", "${toString profile.cursor.size}")
-    hl.env("HYPRCURSOR_SIZE", "${toString profile.cursor.size}")
+    hl.env("XCURSOR_THEME", "${profile.customization.cursor.theme}")
+    hl.env("XCURSOR_SIZE", "${toString profile.customization.cursor.size}")
+    hl.env("HYPRCURSOR_SIZE", "${toString profile.customization.cursor.size}")
   '';
 
   xdg.configFile."hypr/autostart.lua".text = ''

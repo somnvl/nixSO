@@ -4,45 +4,34 @@
     timeZone = "Europe/Paris";
     locale = "en_US.UTF-8";
     consoleKeyMap = "fr";
+
+    nix = {
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        retention = "30d";
+        optimiseAutomatic = true;
+      };
+
+      bootGenerationsLimit = 3;
+    };
   };
 
   user = {
     username = "so";
     repoPath = "/home/so/nixSO";
-  };
 
-  git = {
-    name = "somnvl";
-    email = "186089420+somnvl@users.noreply.github.com";
-  };
-
-  cursor = {
-    theme = "miku";
-    size = 50;
-  };
-
-  features = {
-    docker = true;
-
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      retention = "30d";
-      optimiseAutomatic = true;
+    git = {
+      name = "somnvl";
+      email = "186089420+somnvl@users.noreply.github.com";
     };
-
-    devTools  = true;
-    cDev      = true;
-    pythonDev = true;
-    goDev     = true;
-    wailsDev  = true;
   };
 
-  nvidiaPrime = {
-    enable = true;
-    amdgpuBusId = "PCI:100:0:0";
-    nvidiaBusId = "PCI:1:0:0";
-    renderDevice = "/dev/dri/renderD129";
+  customization = {
+    cursor = {
+      theme = "miku";
+      size = 50;
+    };
   };
 
   displays = [
@@ -51,4 +40,30 @@
       scale = 1.25;
     }
   ];
+
+  dev = {
+    devTools  = true;
+    cDev      = true;
+    pythonDev = true;
+    goDev     = true;
+    wailsDev  = true;
+
+    docker = true;
+  };
+
+
+  hardware = {
+    nvidiaPrime = {
+      enable = true;
+      amdgpuBusId = "PCI:100:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+      renderDevice = "/dev/dri/renderD129";
+    };
+  };
+
+  workarounds = {
+    disablePsr = true;
+    gtk4Renderer = true;
+    niriScanoutWorkarounds = true;
+  };
 }

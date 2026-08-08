@@ -1,11 +1,9 @@
-{ ... }:
+{ profile, lib, ... }:
 {
   boot.kernelParams = [
     "quiet"
     "splash"
-    # Disables AMD Panel Self Refresh (PSR) — known to cause invisible
-    # (not captured by screen recording) flicker/corruption on some AMD
-    # laptop panels
+  ] ++ lib.optionals profile.workarounds.disablePsr [
     "amdgpu.dcdebugmask=0x10"
   ];
 
@@ -28,7 +26,7 @@
       systemd-boot = {
         enable = true;
         editor = false;
-        configurationLimit = 3;
+        configurationLimit = profile.system.nix.bootGenerationsLimit;
       };
 
       grub.enable = false;

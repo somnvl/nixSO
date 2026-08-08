@@ -1,15 +1,10 @@
 { config, lib, profile, ... }:
 
-lib.mkIf profile.nvidiaPrime.enable {
+lib.mkIf profile.hardware.nvidiaPrime.enable {
   environment.systemPackages = [
     config.hardware.nvidia.package
   ];
 
-  # Nvidia's driver doesn't release freed VRAM back to the pool under Wayland
-  # compositors by default, leading to compositor VRAM usage creeping well
-  # past expected baseline over time. This profile caps that for both
-  # compositors (niri and Hyprland), since you switch between them at SDDM.
-  # Source: https://github.com/NVIDIA/egl-wayland/issues/126#issuecomment-2379945259
   environment.etc."nvidia/nvidia-application-profiles-rc.d/50-compositor-vram.json" = {
     text = builtins.toJSON {
       rules = [
@@ -52,8 +47,8 @@ lib.mkIf profile.nvidiaPrime.enable {
         enableOffloadCmd = true;
       };
 
-      amdgpuBusId = profile.nvidiaPrime.amdgpuBusId;
-      nvidiaBusId = profile.nvidiaPrime.nvidiaBusId;
+      amdgpuBusId = profile.hardware.nvidiaPrime.amdgpuBusId;
+      nvidiaBusId = profile.hardware.nvidiaPrime.nvidiaBusId;
     };
   };
 

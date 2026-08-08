@@ -4,7 +4,7 @@
     isNormalUser = true;
     description = profile.user.username;
     extraGroups = [ "networkmanager" "wheel" "dialout" ]
-      ++ lib.optional profile.features.docker "docker";
+      ++ lib.optional profile.dev.docker "docker";
     shell = pkgs.zsh;
   };
 

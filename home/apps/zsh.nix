@@ -27,10 +27,10 @@
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
       logout() {
-        if [[ -n "$NIRI_SOCKET" ]]; then
-          niri msg action quit --skip-confirmation
-        else
+        if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
           uwsm stop
+        else
+          niri msg action quit --skip-confirmation
         fi
       }
     '';

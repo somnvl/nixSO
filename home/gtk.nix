@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, lib, profile, ... }:
 let
   mactahoe-icon-theme = pkgs.callPackage ./packages/mactahoe-icon-theme.nix { };
 in
 {
   home.packages = [ mactahoe-icon-theme ];
 
-  home.sessionVariables = {
+  home.sessionVariables = lib.optionalAttrs profile.workarounds.gtk4Renderer {
     GSK_RENDERER = "ngl";
   };
 
