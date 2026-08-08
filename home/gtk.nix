@@ -5,6 +5,10 @@ in
 {
   home.packages = [ mactahoe-icon-theme ];
 
+  home.sessionVariables = {
+    GSK_RENDERER = "ngl";
+  };
+
   gtk = {
     enable = true;
 
