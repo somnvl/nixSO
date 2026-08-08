@@ -337,19 +337,9 @@ window-rule {
     default-column-width {}
 }
 
-window-rule {
-    match app-id="code"
-    opacity 0.9
-}
-
-window-rule {
-    match app-id="kitty"
-    opacity 0.9
-}
 
 window-rule {
     match app-id="org.gnome.Nautilus"
-    opacity 0.9
     open-maximized false
     default-column-width { proportion 0.5; }
 }
