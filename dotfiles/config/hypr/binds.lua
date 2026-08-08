@@ -26,6 +26,8 @@ hl.bind(mainMod .. " + CTRL + right", hl.dsp.layout("swapcol r"))
 hl.bind(mainMod .. " + CTRL + H", hl.dsp.layout("swapcol l"))
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.layout("swapcol r"))
 
+hl.bind("CTRL + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
+
 for i = 1, 10 do
     local code = i + 9  -- X11 keycode = evdev + 8 : KEY_1=10 ... KEY_9=18, KEY_0=19
     hl.bind(mainMod .. " + code:" .. code, hl.dsp.focus({ workspace = i }))

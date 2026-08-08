@@ -33,6 +33,7 @@ hl.gesture({
     fingers = 3,
     direction = "horizontal",
     action = "scroll_move",
+    scale = 0.8,
 })
 
 if hl.plugin and hl.plugin.scrolloverview then

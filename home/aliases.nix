@@ -1,9 +1,6 @@
 { ... }:
 {
   programs.zsh.shellAliases = {
-    # SESSION
-    logout = "hyprctl dispatch 'hl.dsp.exit()'";
-
     # SHELL
     ll  = "ls -lah --color=auto";
     gcl = "git clone";
