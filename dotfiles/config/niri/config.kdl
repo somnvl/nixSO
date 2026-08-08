@@ -339,17 +339,19 @@ window-rule {
 
 window-rule {
     match app-id="code"
-    opacity 1.0
+    opacity 0.9
 }
 
 window-rule {
     match app-id="kitty"
-    opacity 1.0
+    opacity 0.9
 }
 
 window-rule {
     match app-id="org.gnome.Nautilus"
-    opacity 1.0
+    opacity 0.9
+    open-maximized false
+    default-column-width { proportion 0.5; }
 }
 
 // Example: block out two password managers from screen capture.

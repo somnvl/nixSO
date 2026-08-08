@@ -57,10 +57,12 @@ in
   };
 
   dconf.settings = {
-    # nautilus-open-any-terminal defaults to gnome-terminal, which isn't
-    # installed here — point it at kitty instead.
     "com/github/stunkymonkey/nautilus-open-any-terminal" = {
       terminal = "kitty";
+    };
+
+    "org/gnome/nautilus/window-state" = {
+      maximized = false;
     };
   };
 }
