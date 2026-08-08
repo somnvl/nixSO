@@ -14,7 +14,7 @@
     ./apps/niri.nix
     ./apps/quickshell.nix
     ./apps/spicetify.nix
-    ./apps/vesktop.nix    
+    ./apps/vesktop.nix
     ./apps/vscode.nix
     ./apps/zsh.nix
   ];

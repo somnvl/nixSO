@@ -7,7 +7,7 @@
 
     wifi = "sudo nmtui";
     bluetooth = "sudo bluetui";
-  
+
     # WORK
     ccc = "cc -Wall -Wextra -Werror";
     vg = "valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes";

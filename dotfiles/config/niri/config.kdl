@@ -1,9 +1,5 @@
 prefer-no-csd
 
-debug {
-    wait-for-frame-completion-before-queueing
-}
-
 // This config is in the KDL format: https://kdl.dev
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
@@ -76,9 +72,6 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "eDP-1" {
-    scale 1.33
-}
 //output "eDP-1" {
     // Uncomment this line to disable this output.
     //off

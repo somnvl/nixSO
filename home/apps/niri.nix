@@ -1,4 +1,4 @@
-{ pkgs, profile, ... }:
+{ pkgs, lib, profile, ... }:
 {
   xdg.configFile."niri/cursor.kdl".text = ''
     cursor {
@@ -7,6 +7,19 @@
         hide-after-inactive-ms 15000
     }
   '';
+
+  xdg.configFile."niri/gpu.kdl".text = lib.optionalString profile.nvidiaPrime.enable ''
+    debug {
+        render-drm-device "${profile.nvidiaPrime.renderDevice}"
+        wait-for-frame-completion-before-queueing
+    }
+  '';
+
+  xdg.configFile."niri/outputs.kdl".text = lib.concatMapStringsSep "\n" (d: ''
+    output "${d.connector}" {
+        scale ${toString d.scale}
+    }
+  '') profile.displays;
 
   xdg.configFile."niri/config.kdl".source = ../../dotfiles/config/niri/config.kdl;
 }
