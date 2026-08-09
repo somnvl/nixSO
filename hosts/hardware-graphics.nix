@@ -10,11 +10,6 @@ lib.mkIf profile.hardware.nvidiaPrime.enable {
       rules = [
         {
           pattern.feature = "procname";
-          pattern.matches = "niri";
-          profile = "Limit Free Buffer Pool On Wayland Compositors";
-        }
-        {
-          pattern.feature = "procname";
           pattern.matches = "Hyprland";
           profile = "Limit Free Buffer Pool On Wayland Compositors";
         }

@@ -5,10 +5,6 @@ in
 {
   home.packages = [ mactahoe-icon-theme ];
 
-  home.sessionVariables = lib.optionalAttrs profile.workarounds.gtk4Renderer {
-    GSK_RENDERER = "ngl";
-  };
-
   gtk = {
     enable = true;
 

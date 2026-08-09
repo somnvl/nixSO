@@ -1,6 +1,8 @@
 { ... }:
 {
   programs.zsh.shellAliases = {
+    logout = "uwsm stop";
+
     # SHELL
     ll  = "ls -lah --color=auto";
     gcl = "git clone";

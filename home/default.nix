@@ -11,7 +11,6 @@
     ./apps/hyprlock.nix
     ./apps/kitty.nix
     ./apps/nautilus.nix
-    ./apps/niri.nix
     ./apps/quickshell.nix
     ./apps/spicetify.nix
     ./apps/vesktop.nix

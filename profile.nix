@@ -34,13 +34,6 @@
     };
   };
 
-  displays = [
-    {
-      connector = "eDP-1";
-      scale = 1.25;
-    }
-  ];
-
   dev = {
     devTools  = true;
     cDev      = true;
@@ -51,19 +44,15 @@
     docker = true;
   };
 
-
   hardware = {
     nvidiaPrime = {
       enable = true;
       amdgpuBusId = "PCI:100:0:0";
       nvidiaBusId = "PCI:1:0:0";
-      renderDevice = "/dev/dri/renderD129";
     };
   };
 
   workarounds = {
     disablePsr = false;
-    gtk4Renderer = false;
-    niriScanoutWorkarounds = false;
   };
 }
