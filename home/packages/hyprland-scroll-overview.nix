@@ -36,7 +36,7 @@ hyprlandPlugins.mkHyprlandPlugin {
   '';
 
   meta = {
-    description = "Scrollable workspace overview plugin for Hyprland, like niri's overview";
+    description = "Scrollable workspace overview plugin for Hyprland";
     homepage = "https://github.com/yayuuu/hyprland-scroll-overview";
     license = lib.licenses.bsd3;
     platforms = lib.platforms.linux;
