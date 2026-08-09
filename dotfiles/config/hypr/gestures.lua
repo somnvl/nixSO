@@ -15,6 +15,7 @@ hl.config({
 
 hl.gesture({ fingers = 3, direction = "up",   action = function() hl.dispatch(hl.dsp.focus({ workspace = "r+1" })) end })
 hl.gesture({ fingers = 3, direction = "down", action = function() hl.dispatch(hl.dsp.focus({ workspace = "r-1" })) end })
+
 hl.gesture({
     fingers = 3,
     direction = "horizontal",
@@ -31,10 +32,10 @@ if hl.plugin and hl.plugin.scrolloverview then
         },
     })
 
-    hl.plugin.scrolloverview.gesture({
+    hl.gesture({
         fingers = 4,
         direction = "vertical",
-        scale = 0.8,
+        action = function() hl.dispatch(hl.plugin.scrolloverview.overview("toggle")) end,
     })
 end
 
