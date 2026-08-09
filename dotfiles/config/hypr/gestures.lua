@@ -10,30 +10,16 @@ hl.config({
             scroll_factor            = 1.0,
         },
     },
-
-    gestures = {
-        workspace_swipe_distance = 300,
-        workspace_swipe_invert = true,
-        workspace_swipe_min_speed_to_force = 0,
-        workspace_swipe_direction_lock = true,
-        workspace_swipe_direction_lock_threshold = 10,
-        workspace_swipe_create_new = true,
-    },
 })
 
 
-hl.gesture({
-    fingers = 3,
-    direction = "vertical",
-    action = "workspace",
-    scale = 0.9,
-})
-
+hl.gesture({ fingers = 3, direction = "up",   action = function() hl.dispatch(hl.dsp.focus({ workspace = "r+1" })) end })
+hl.gesture({ fingers = 3, direction = "down", action = function() hl.dispatch(hl.dsp.focus({ workspace = "r-1" })) end })
 hl.gesture({
     fingers = 3,
     direction = "horizontal",
     action = "scroll_move",
-    scale = 0.8,
+    scale = 1.0,
 })
 
 if hl.plugin and hl.plugin.scrolloverview then
@@ -70,8 +56,10 @@ end
 
 hl.on("keybinds.submap", function(submapName)
     if submapName == "scrolloverview" then
-        hl.gesture({ fingers = 3, direction = "vertical", action = "unset", scale = 0.9 })
+        hl.gesture({ fingers = 3, direction = "up",   action = "unset" })
+        hl.gesture({ fingers = 3, direction = "down", action = "unset" })
     else
-        hl.gesture({ fingers = 3, direction = "vertical", action = "workspace", scale = 0.9 })
+        hl.gesture({ fingers = 3, direction = "up",   action = function() hl.dispatch(hl.dsp.focus({ workspace = "r+1" })) end })
+        hl.gesture({ fingers = 3, direction = "down", action = function() hl.dispatch(hl.dsp.focus({ workspace = "r-1" })) end })
     end
 end)
