@@ -1,6 +1,8 @@
 profile.nix
 
+docs/
+
 result
 result-*
 
-docs/
+.mypy_cache/
