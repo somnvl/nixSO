@@ -34,6 +34,7 @@ if hl.plugin and hl.plugin.scrolloverview then
     hl.plugin.scrolloverview.gesture({
         fingers = 4,
         direction = "vertical",
+        scale = 0.8,
     })
 end
 
