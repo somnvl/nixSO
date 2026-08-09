@@ -42,6 +42,14 @@
       theme = "miku";
       size = 24;
     };
+
+    # kb_layout (comma-separated, first is default) and the XKB option
+    # controlling how you switch between them — see the full option list:
+    # https://man.archlinux.org/man/xkeyboard-config.7
+    keyboard = {
+      layout = "us";
+      switchOption = "grp:alts_toggle";
+    };
   };
 
   # Dev toolchains + dev-adjacent services, off by default so forking this

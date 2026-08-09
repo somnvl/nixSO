@@ -32,6 +32,11 @@
       theme = "miku";
       size = 50;
     };
+
+    keyboard = {
+      layout = "fr,us";
+      switchOption = "grp:alts_toggle";
+    };
   };
 
   dev = {
