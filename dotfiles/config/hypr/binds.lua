@@ -95,7 +95,7 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 if hl.plugin and hl.plugin.scrolloverview then
     hl.bind(mainMod .. " + Tab", function()
         hl.plugin.scrolloverview.overview("toggle")
-    end)
+    end, { submap_universal = true })
 end
 
 hl.bind(mainMod .. " + SHIFT + P", function()
