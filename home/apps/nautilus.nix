@@ -47,7 +47,24 @@ in
   # transparently gets the version with working extensions.
   home.packages = [ nautilusWrapped ];
 
+  # Our own custom extension — unlike the ones above, it's not a Nix
+  # store package, so it doesn't need the XDG_DATA_DIRS treatment. It
+  # goes straight into ~/.local/share (XDG_DATA_HOME), which
+  # nautilus-python already scans by default.
   xdg = {
+    dataFile."nautilus-python/extensions/set-background-extension.py".source =
+      ../packages/set-back  xdg = {
+    dataFile."nautilus-python/extensions/set-background-extension.py".source =
+      ../packages/set-background-extension.py;
+
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
+      };
+    };
+  };ground-extension.py;
+
     mimeApps = {
       enable = true;
       defaultApplications = {

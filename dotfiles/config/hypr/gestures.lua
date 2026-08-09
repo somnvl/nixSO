@@ -27,7 +27,7 @@ if hl.plugin and hl.plugin.scrolloverview then
     hl.config({
         plugin = {
             scrolloverview = {
-                gesture_distance = 300,
+                gesture_distance = 200,
             },
         },
     })
