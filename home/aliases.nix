@@ -1,8 +1,6 @@
 { ... }:
 {
   programs.zsh.shellAliases = {
-    logout = "uwsm stop";
-
     # SHELL
     ll  = "ls -lah --color=auto";
     gcl = "git clone";
@@ -16,4 +14,12 @@
     p3 = "python3";
     cx = "chmod +x";
   };
+
+  programs.zsh.initContent = ''
+    logout() {
+      if uwsm stop 2>&1 | grep -q "not running"; then
+        hyprctl dispatch 'hl.dsp.exit()'
+      fi
+    }
+  '';
 }
