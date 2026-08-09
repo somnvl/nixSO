@@ -1,9 +1,9 @@
 {
   "foreground": "#C2C2C2",
   "background": "#333333",
-  "selectionForeground": "none",
+  "selectionForeground": "#333333",
   "selectionBackground": "#545454",
-  "cursor": "none",
+  "cursor": "#C2C2C2",
   "color0": "#333333",
   "color1": "#CCCCCC",
   "color2": "#686868",
