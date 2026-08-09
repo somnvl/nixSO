@@ -6,7 +6,7 @@ if hl.plugin and hl.plugin.scrolloverview then
                 workspace_gap = 20,
                 layout = "vertical",
                 wallpaper = 0,
-                blur = true,
+                blur = false,
 
                 shadow = {
                     enabled = false,

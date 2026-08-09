@@ -5,7 +5,6 @@
     ./cursor.nix
     ./gtk.nix
     ./pkgs.nix
-    ./apps/fastfetch.nix
     ./apps/git.nix
     ./apps/hyprland.nix
     ./apps/hyprlock.nix
