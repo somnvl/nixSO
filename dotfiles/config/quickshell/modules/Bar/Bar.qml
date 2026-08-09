@@ -11,10 +11,11 @@ Variants {
         required property var modelData
         screen: modelData
 
-        WlrLayershell.namespace: "quickshell"
+        WlrLayershell.namespace: "quickshell:bar"
 
         surfaceFormat.opaque: false
         color: "transparent"
+        exclusiveZone: 0
 
         anchors {
             top: true
@@ -39,6 +40,7 @@ Variants {
                     interval: 1000
                     running: true
                     repeat: true
+                    triggeredOnStart: true
                     onTriggered: clock.text = Qt.formatDateTime(new Date(), "HH:mm")
                 }
             }
