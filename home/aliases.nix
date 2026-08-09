@@ -13,6 +13,11 @@
     vg = "valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes";
     p3 = "python3";
     cx = "chmod +x";
+
+    # WALLPAPER
+    wallset  = "qs ipc call wallpaper set";
+    wallnext = "qs ipc call wallpaper rotateNow";
+    wallget  = "qs ipc call wallpaper get";
   };
 
   programs.zsh.initContent = ''

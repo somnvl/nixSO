@@ -37,6 +37,17 @@
       layout = "fr,us";
       switchOption = "grp:alts_toggle";
     };
+
+    wallpaper = {
+      fitMode = "cover";
+      transitionDuration = 3000;
+
+      autorotate = {
+        enable = true;
+        folder = "/home/so/Pictures/wallpapers";
+        frequencyMinutes = 60;
+      };
+    };
   };
 
   dev = {

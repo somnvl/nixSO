@@ -50,6 +50,17 @@
       layout = "us";
       switchOption = "grp:alts_toggle";
     };
+
+    wallpaper = {
+      fitMode = "cover";
+      transitionDuration = 1500;
+
+      autorotate = {
+        enable = false;
+        folder = "/home/your-username/Pictures/wallpapers";
+        frequencyMinutes = 60;
+      };
+    };
   };
 
   # Dev toolchains + dev-adjacent services, off by default so forking this
