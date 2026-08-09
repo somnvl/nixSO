@@ -39,6 +39,8 @@ hl.config({
     },
 })
 
+hl.workspace_rule({ workspace = "2", monitor = "eDP-1", default = true })
+
 for i = 1, 10 do
     hl.workspace_rule({ workspace = tostring(i), persistent = true })
 end

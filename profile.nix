@@ -28,6 +28,10 @@
   };
 
   customization = {
+    color = {
+      defaultPreset = "e-ink-light";
+    };
+
     cursor = {
       theme = "miku";
       size = 50;

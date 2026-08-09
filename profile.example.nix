@@ -36,6 +36,10 @@
 
   # Ricing/theming choices.
   customization = {
+    color = {
+      defaultPreset = "e-ink-light";
+    };
+
     # Shared by cursor.nix and hyprland.nix (env vars) so the two can't
     # drift out of sync.
     cursor = {
