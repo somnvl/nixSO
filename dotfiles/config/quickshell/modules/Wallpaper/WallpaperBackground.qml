@@ -22,6 +22,8 @@ Variants {
             anchors.fill: parent
 
             property bool usingA: true
+            property bool animating: false
+            property bool needsSwap: false
             property int fillMode: {
                 switch (WallpaperService.fitMode) {
                     case "contain": return Image.PreserveAspectFit
@@ -29,6 +31,18 @@ Variants {
                     case "tile":     return Image.Tile
                     default:         return Image.PreserveAspectCrop
                 }
+            }
+
+            function doSwap() {
+                const path = WallpaperService.currentWallpaper
+                const src = path !== "" ? "file://" + path : ""
+                layers.animating = true
+                if (layers.usingA) {
+                    layerB.source = src
+                } else {
+                    layerA.source = src
+                }
+                layers.usingA = !layers.usingA
             }
 
             AnimatedImage {
@@ -46,7 +60,17 @@ Variants {
                     }
                 }
 
-                onOpacityChanged: if (opacity === 0) source = ""
+                onOpacityChanged: {
+                    if (opacity === 0) {
+                        source = ""
+                    } else if (opacity === 1) {
+                        layers.animating = false
+                        if (layers.needsSwap) {
+                            layers.needsSwap = false
+                            layers.doSwap()
+                        }
+                    }
+                }
             }
 
             AnimatedImage {
@@ -64,20 +88,27 @@ Variants {
                     }
                 }
 
-                onOpacityChanged: if (opacity === 0) source = ""
+                onOpacityChanged: {
+                    if (opacity === 0) {
+                        source = ""
+                    } else if (opacity === 1) {
+                        layers.animating = false
+                        if (layers.needsSwap) {
+                            layers.needsSwap = false
+                            layers.doSwap()
+                        }
+                    }
+                }
             }
 
             Connections {
                 target: WallpaperService
                 function onCurrentWallpaperChanged() {
-                    const path = WallpaperService.currentWallpaper
-                    const src = path !== "" ? "file://" + path : ""
-                    if (layers.usingA) {
-                        layerB.source = src
+                    if (layers.animating) {
+                        layers.needsSwap = true
                     } else {
-                        layerA.source = src
+                        layers.doSwap()
                     }
-                    layers.usingA = !layers.usingA
                 }
             }
 

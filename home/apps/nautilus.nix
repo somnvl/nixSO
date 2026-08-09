@@ -53,17 +53,7 @@ in
   # nautilus-python already scans by default.
   xdg = {
     dataFile."nautilus-python/extensions/set-background-extension.py".source =
-      ../packages/set-back  xdg = {
-    dataFile."nautilus-python/extensions/set-background-extension.py".source =
       ../packages/set-background-extension.py;
-
-    mimeApps = {
-      enable = true;
-      defaultApplications = {
-        "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
-      };
-    };
-  };ground-extension.py;
 
     mimeApps = {
       enable = true;
