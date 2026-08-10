@@ -20,6 +20,14 @@ Variants {
         Item {
             id: layers
             anchors.fill: parent
+            opacity: WallpaperService.hidden ? 0 : 1
+
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: 250
+                    easing.type: Easing.InOutQuad
+                }
+            }
 
             property bool usingA: true
             property bool animating: false

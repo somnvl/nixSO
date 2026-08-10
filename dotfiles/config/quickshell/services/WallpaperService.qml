@@ -10,6 +10,7 @@ Singleton {
     property string currentWallpaper: ""
     property string fitMode: "cover"
     property int transitionDuration: 400
+    property bool hidden: false
 
     property bool autorotateEnable: false
     property string autorotateFolder: ""
@@ -28,6 +29,7 @@ Singleton {
         onLoaded: {
             root.fitMode = adapter.fitMode
             root.transitionDuration = adapter.transitionDuration
+            root.hidden = adapter.hidden
             root.autorotateEnable = adapter.autorotateEnable
             root.autorotateFolder = adapter.autorotateFolder
             root.autorotateFrequencyMinutes = adapter.autorotateFrequencyMinutes
@@ -36,6 +38,7 @@ Singleton {
         adapter: JsonAdapter {
             property string fitMode: "cover"
             property int transitionDuration: 400
+            property bool hidden: false
             property bool autorotateEnable: false
             property string autorotateFolder: ""
             property int autorotateFrequencyMinutes: 30
@@ -53,6 +56,7 @@ Singleton {
             root.currentWallpaper = adapter.path
             root.fitMode = adapter.fitMode
             root.transitionDuration = adapter.transitionDuration
+            root.hidden = adapter.hidden
             root.autorotateEnable = adapter.autorotateEnable
             root.autorotateFolder = adapter.autorotateFolder
             root.autorotateFrequencyMinutes = adapter.autorotateFrequencyMinutes
@@ -63,6 +67,7 @@ Singleton {
             property string path: ""
             property string fitMode: "cover"
             property int transitionDuration: 400
+            property bool hidden: false
             property bool autorotateEnable: false
             property string autorotateFolder: ""
             property int autorotateFrequencyMinutes: 30
@@ -90,6 +95,7 @@ Singleton {
         stateFile.adapter.path = root.currentWallpaper
         stateFile.adapter.fitMode = root.fitMode
         stateFile.adapter.transitionDuration = root.transitionDuration
+        stateFile.adapter.hidden = root.hidden
         stateFile.adapter.autorotateEnable = root.autorotateEnable
         stateFile.adapter.autorotateFolder = root.autorotateFolder
         stateFile.adapter.autorotateFrequencyMinutes = root.autorotateFrequencyMinutes
@@ -147,6 +153,15 @@ Singleton {
         root.syncState()
     }
 
+    function setHidden(hide) {
+        root.hidden = hide
+        root.syncState()
+    }
+
+    function setHiddenState(state) {
+        root.setHidden(state === "on")
+    }
+
     function setAutorotateEnable(enable) {
         root.autorotateEnable = enable
         root.syncState()
@@ -178,6 +193,9 @@ Singleton {
         function getFit(): string { return root.fitMode }
         function setTransition(ms: int): void { root.setTransition(ms) }
         function getTransition(): int { return root.transitionDuration }
+        function setHidden(hide: bool): void { root.setHidden(hide) }
+        function getHidden(): bool { return root.hidden }
+        function setHiddenState(state: string): void { root.setHiddenState(state) }
         function rotateNow(): void { root.rotateNow() }
         function setAutorotateEnable(enable: bool): void { root.setAutorotateEnable(enable) }
         function getAutorotateEnable(): bool { return root.autorotateEnable }
