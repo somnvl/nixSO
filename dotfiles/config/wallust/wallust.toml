@@ -8,3 +8,9 @@ quickshell.target = "~/.cache/wallust/quickshell-colors.json"
 
 hyprland.template = "hyprland.template"
 hyprland.target = "~/.config/hypr/colors.lua"
+
+vscode.template = "vscode.json"
+vscode.target = "~/.cache/wallust/colors.json"
+
+vscode2.template = "vscode"
+vscode2.target = "~/.cache/wallust/colors"

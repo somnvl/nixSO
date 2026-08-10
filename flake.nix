@@ -20,9 +20,14 @@
       url = "github:yannmasoch/nautilus-my-computer?dir=packaging/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, assets, spicetify, nautilus-my-computer, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, assets, spicetify, nautilus-my-computer, nix-vscode-extensions, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -37,6 +42,7 @@
         specialArgs = { inherit inputs profile assets; };
         modules = [
           ./hosts/configuration.nix
+          { nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ]; }
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
