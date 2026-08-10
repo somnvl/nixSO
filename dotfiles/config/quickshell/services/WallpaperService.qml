@@ -18,8 +18,32 @@ Singleton {
 
     property var rotationQueue: []
     property int queueIndex: 0
+    property bool pendingRotate: false
 
     readonly property var validFitModes: ["cover", "contain", "stretch", "tile"]
+
+    function expandHome(path) {
+        if (path.indexOf("$HOME") === 0) {
+            return Quickshell.env("HOME") + path.slice(5)
+        }
+        return path
+    }
+
+    function loadState() {
+        stateFile.path = Quickshell.statePath("wallpaper.json")
+    }
+
+    function resetToDefaults() {
+        root.currentWallpaper = ""
+        root.fitMode = defaultsFile.adapter.fitMode
+        root.transitionDuration = defaultsFile.adapter.transitionDuration
+        root.hidden = defaultsFile.adapter.hidden
+        root.autorotateEnable = defaultsFile.adapter.autorotateEnable
+        root.autorotateFolder = root.expandHome(defaultsFile.adapter.autorotateFolder)
+        root.autorotateFrequencyMinutes = defaultsFile.adapter.autorotateFrequencyMinutes
+        root.rotationQueue = []
+        root.syncState()
+    }
 
     FileView {
         id: defaultsFile
@@ -31,8 +55,9 @@ Singleton {
             root.transitionDuration = adapter.transitionDuration
             root.hidden = adapter.hidden
             root.autorotateEnable = adapter.autorotateEnable
-            root.autorotateFolder = adapter.autorotateFolder
+            root.autorotateFolder = root.expandHome(adapter.autorotateFolder)
             root.autorotateFrequencyMinutes = adapter.autorotateFrequencyMinutes
+            root.loadState()
         }
 
         adapter: JsonAdapter {
@@ -47,7 +72,6 @@ Singleton {
 
     FileView {
         id: stateFile
-        path: Quickshell.statePath("wallpaper.json")
         watchChanges: true
         printErrors: false
 
@@ -79,6 +103,13 @@ Singleton {
         folder: root.autorotateFolder !== "" ? "file://" + root.autorotateFolder : ""
         nameFilters: ["*.jpg", "*.jpeg", "*.png", "*.gif", "*.webp"]
         showDirs: false
+
+        onStatusChanged: {
+            if (status === FolderListModel.Ready && root.pendingRotate) {
+                root.pendingRotate = false
+                root.rotateNow()
+            }
+        }
     }
 
     Timer {
@@ -126,6 +157,10 @@ Singleton {
     }
 
     function rotateNow() {
+        if (rotationFolder.status === FolderListModel.Loading) {
+            root.pendingRotate = true
+            return
+        }
         if (rotationFolder.count === 0) return
         if (root.rotationQueue.length === 0 || root.queueIndex >= root.rotationQueue.length) {
             rebuildQueue()
@@ -204,5 +239,6 @@ Singleton {
         function getAutorotateFolder(): string { return root.autorotateFolder }
         function setAutorotateFrequency(minutes: int): void { root.setAutorotateFrequency(minutes) }
         function getAutorotateFrequency(): int { return root.autorotateFrequencyMinutes }
+        function resetToDefaults(): void { root.resetToDefaults() }
     }
 }

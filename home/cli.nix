@@ -85,6 +85,9 @@
     (writeShellScriptBin "wallnext" ''
       exec qs ipc call wallpaper rotateNow
     '')
+    (writeShellScriptBin "wallreset" ''
+      exec qs ipc call wallpaper resetToDefaults
+    '')
 
     (writeShellScriptBin "wallhelp" ''
       echo 'wall <method> [args]          raw IPC forward to the wallpaper service'
@@ -104,6 +107,7 @@
       echo 'wallrotatefreq <minutes>      autorotate interval'
       echo 'wallrotatefreqget             get autorotate interval'
       echo 'wallnext                      rotate to the next wallpaper now'
+      echo 'wallreset                     reset fit/transition/hide/autorotate to config defaults'
     '')
 
     (writeShellScriptBin "themeset" ''

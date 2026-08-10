@@ -2,6 +2,6 @@
   "fitMode": "cover",
   "transitionDuration": 3000,
   "autorotateEnable": false,
-  "autorotateFolder": "",
+  "autorotateFolder": "$HOME/Pictures/wallpapers",
   "autorotateFrequencyMinutes": 60
 }

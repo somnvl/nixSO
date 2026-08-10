@@ -5,7 +5,8 @@
     ./cli.nix
     ./cursor.nix
     ./gtk.nix
-    ./pkgs.nix
+    ./pkgs/apps.nix
+    ./pkgs/dev.nix
     ./apps/git.nix
     ./apps/hyprland.nix
     ./apps/hyprlock.nix
