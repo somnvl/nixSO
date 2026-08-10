@@ -3,7 +3,7 @@
   boot.kernelParams = [
     "quiet"
     "splash"
-  ] ++ lib.optionals profile.workarounds.disablePsr [
+  ] ++ lib.optionals profile.hardware.workarounds.disablePsr [
     "amdgpu.dcdebugmask=0x10"
   ];
 

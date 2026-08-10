@@ -1,18 +1,20 @@
 {
-  # Copy to profile.nix and fill in your own values.
+  # Copy this file to profile.nix and fill in your own values.
 
   system = {
     hostname = "your-hostname";        # networking.hostName
-    timeZone = "Europe/Paris";         # time.timeZone
+    timeZone = "Europe/Paris";         # time.timeZone — tz database name,
+                                        # e.g. "America/New_York", "Asia/Tokyo"
     locale = "en_US.UTF-8";            # i18n.defaultLocale
-    consoleKeyMap = "fr";              # TTY-only layout, before graphical session
+    consoleKeyMap = "fr";              # TTY-only layout, before graphical
+                                        # session starts — `localectl list-keymaps`
 
     nix = {
       gc = {
         automatic = true;
-        dates = "weekly";
-        retention = "30d";
-        optimiseAutomatic = true;
+        dates = "weekly";              # systemd calendar expression
+        retention = "30d";             # generations older than this get GC'd
+        optimiseAutomatic = true;      # dedupe store paths after GC
       };
 
       # Past generations kept in the systemd-boot menu.
@@ -30,6 +32,7 @@
     git = {
       name = "your-name";
       # Use a GitHub noreply email to keep your real one out of a public repo.
+      # Find yours at: https://github.com/settings/emails
       email = "your-id+your-username@users.noreply.github.com";
     };
   };
@@ -37,12 +40,16 @@
   # Ricing/theming choices.
   customization = {
     color = {
+      # Wallust color preset applied at login. Available presets live in
+      # dotfiles/theming/presets/ — add your own the same way.
       defaultPreset = "e-ink-light";
     };
 
     # Shared by cursor.nix and hyprland.nix (env vars) so the two can't
     # drift out of sync.
     cursor = {
+      # Must be an installed cursor theme name (XCURSOR_THEME), not a
+      # nixpkgs attribute — e.g. a theme installed via home.packages.
       theme = "miku";
       size = 24;
     };
@@ -51,13 +58,13 @@
     # controlling how you switch between them — see the full option list:
     # https://man.archlinux.org/man/xkeyboard-config.7
     keyboard = {
-      layout = "us";
-      switchOption = "grp:alts_toggle";
+      layout = "us";                   # e.g. "us", "fr", "fr,us", "de,us"
+      switchOption = "grp:alts_toggle"; # e.g. "grp:alts_toggle", "grp:win_space_toggle"
     };
 
     wallpaper = {
-      fitMode = "cover";
-      transitionDuration = 1500;
+      fitMode = "cover";               # "cover" | "contain" | "fill" | "tile"
+      transitionDuration = 1500;       # milliseconds
 
       autorotate = {
         enable = false;
@@ -91,12 +98,12 @@
       amdgpuBusId = "PCI:0:0:0";
       nvidiaBusId = "PCI:0:0:0";
     };
-  };
 
-  # ─────────────────────────────────────────────────────────────────────
-  # Debug/diagnostic — almost certainly NOT relevant to you.
-  # ─────────────────────────────────────────────────────────────────────
-  workarounds = {
-    disablePsr = false;
+    # ───────────────────────────────────────────────────────────────────
+    # Debug/diagnostic — almost certainly NOT relevant to you.
+    # ───────────────────────────────────────────────────────────────────
+    workarounds = {
+      disablePsr = false;
+    };
   };
 }

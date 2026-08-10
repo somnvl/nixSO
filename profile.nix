@@ -70,9 +70,9 @@
       amdgpuBusId = "PCI:100:0:0";
       nvidiaBusId = "PCI:1:0:0";
     };
-  };
 
-  workarounds = {
-    disablePsr = false;
+    workarounds = {
+      disablePsr = false;
+    };
   };
 }
