@@ -127,6 +127,7 @@ Singleton {
         onLoaded: {
             root.paletteSource = adapter.paletteSource
             root.activePreset = adapter.activePreset
+            stateFile.path = Quickshell.statePath("color.json")
         }
 
         adapter: JsonAdapter {
@@ -137,7 +138,6 @@ Singleton {
 
     FileView {
         id: stateFile
-        path: Quickshell.statePath("color.json")
         watchChanges: true
         printErrors: false
 
