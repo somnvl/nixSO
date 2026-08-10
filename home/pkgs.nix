@@ -3,10 +3,11 @@
   home.packages = with pkgs; [
     google-chrome
 
-    hyprshutdown
     hyprshot
       grim
       slurp
+    wallust
+
   ]
   ++ lib.optionals profile.dev.devTools (with pkgs; [
     gnumake

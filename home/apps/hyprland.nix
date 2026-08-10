@@ -34,20 +34,12 @@ in
     })
   '';
 
-  xdg.configFile."hypr/programs.lua".text = ''
-    return {
-        terminal    = "kitty",
-        fileManager = "nautilus",
-        browser     = "google-chrome-stable",
-        editor      = "code",
-    }
-  '';
-
-  xdg.configFile."hypr/animations.lua".source  = ../../dotfiles/config/hypr/animations.lua;
-  xdg.configFile."hypr/binds.lua".source       = ../../dotfiles/config/hypr/binds.lua;
-  xdg.configFile."hypr/gestures.lua".source    = ../../dotfiles/config/hypr/gestures.lua;
-  xdg.configFile."hypr/hyprland.lua".source    = ../../dotfiles/config/hypr/hyprland.lua;
-  xdg.configFile."hypr/look.lua".source        = ../../dotfiles/config/hypr/look.lua;
+  xdg.configFile."hypr/animations.lua".source     = ../../dotfiles/config/hypr/animations.lua;
+  xdg.configFile."hypr/binds.lua".source          = ../../dotfiles/config/hypr/binds.lua;
+  xdg.configFile."hypr/gestures.lua".source       = ../../dotfiles/config/hypr/gestures.lua;
+  xdg.configFile."hypr/hyprland.lua".source       = ../../dotfiles/config/hypr/hyprland.lua;
+  xdg.configFile."hypr/look.lua".source           = ../../dotfiles/config/hypr/look.lua;
+  xdg.configFile."hypr/programs.lua".source       = ../../dotfiles/config/hypr/programs.lua;
   xdg.configFile."hypr/scrolloverview.lua".source = ../../dotfiles/config/hypr/scrolloverview.lua;
-  xdg.configFile."hypr/windowrules.lua".source = ../../dotfiles/config/hypr/windowrules.lua;
+  xdg.configFile."hypr/windowrules.lua".source    = ../../dotfiles/config/hypr/windowrules.lua;
 }
