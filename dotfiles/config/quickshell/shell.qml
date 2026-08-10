@@ -7,8 +7,4 @@ import "services"
 ShellRoot {
     Bar {}
     WallpaperBackground {}
-
-    Component.onCompleted: {
-        WallpaperService.get()
-    }
 }

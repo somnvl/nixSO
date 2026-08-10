@@ -1,6 +1,10 @@
 { pkgs, profile, ... }:
 let
   scrolloverview = pkgs.callPackage ../packages/hyprland-scroll-overview.nix { };
+
+  colorDefaults = builtins.fromJSON (builtins.readFile ../../dotfiles/config/quickshell/config-defaults/color.json);
+  fallbackPreset = builtins.fromJSON (builtins.readFile
+    ../../dotfiles/config/wallust/colorschemes/${colorDefaults.activePreset}.json);
 in
 {
   xdg.configFile."hypr/env.lua".text = ''
@@ -9,14 +13,23 @@ in
     hl.env("HYPRCURSOR_SIZE", "${toString profile.customization.cursor.size}")
   '';
 
+  xdg.configFile."hypr/colors-fallback.lua".text = ''
+    return {
+        background = "${fallbackPreset.special.background}",
+        foreground = "${fallbackPreset.special.foreground}",
+        cursor     = "${fallbackPreset.special.cursor}",
+        color4     = "${fallbackPreset.colors.color4}",
+        color8     = "${fallbackPreset.colors.color8}",
+    }
+  '';
+
   xdg.configFile."hypr/autostart.lua".text = ''
     hl.on("hyprland.start", function()
         hl.exec_cmd("hyprctl plugin load ${scrolloverview}/lib/libscrolloverview.so")
         hl.exec_cmd("quickshell")
-        hl.exec_cmd("[ -f $HOME/.config/hypr/colors.lua ] || wallust cs $HOME/.config/wallust/colorschemes/${profile.customization.color.defaultPreset}.json && hyprctl reload")
+        hl.exec_cmd("[ -f $HOME/.config/hypr/colors.lua ] || wallust cs $HOME/.config/wallust/colorschemes/$(jq -r .activePreset $HOME/.config/quickshell/config-defaults/color.json).json && hyprctl reload")
     end)
   '';
-
 
   xdg.configFile."hypr/input.lua".text = ''
     hl.config({
@@ -24,7 +37,7 @@ in
             kb_layout  = "${profile.customization.keyboard.layout}",
             kb_variant = "",
             kb_model   = "",
-            kb_options = "${profile.customization.keyboard.switchOption}",
+            kb_options = "",
             kb_rules   = "",
 
             numlock_by_default = true,

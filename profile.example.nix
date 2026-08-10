@@ -37,40 +37,15 @@
     };
   };
 
-  # Ricing/theming choices.
   customization = {
-    color = {
-      # Wallust color preset applied at login. Available presets live in
-      # dotfiles/theming/presets/ — add your own the same way.
-      defaultPreset = "e-ink-light";
-    };
-
-    # Shared by cursor.nix and hyprland.nix (env vars) so the two can't
-    # drift out of sync.
     cursor = {
-      # Must be an installed cursor theme name (XCURSOR_THEME), not a
-      # nixpkgs attribute — e.g. a theme installed via home.packages.
       theme = "miku";
       size = 24;
     };
 
-    # kb_layout (comma-separated, first is default) and the XKB option
-    # controlling how you switch between them — see the full option list:
-    # https://man.archlinux.org/man/xkeyboard-config.7
+    # kb_layout (comma-separated, first is default)
     keyboard = {
-      layout = "us";                   # e.g. "us", "fr", "fr,us", "de,us"
-      switchOption = "grp:alts_toggle"; # e.g. "grp:alts_toggle", "grp:win_space_toggle"
-    };
-
-    wallpaper = {
-      fitMode = "cover";               # "cover" | "contain" | "fill" | "tile"
-      transitionDuration = 1500;       # milliseconds
-
-      autorotate = {
-        enable = false;
-        folder = "/home/your-username/Pictures/wallpapers";
-        frequencyMinutes = 60;
-      };
+      layout = "fr";                   # e.g. "us", "fr", "fr,us", "de,us"
     };
   };
 

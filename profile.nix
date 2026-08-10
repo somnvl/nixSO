@@ -28,10 +28,6 @@
   };
 
   customization = {
-    color = {
-      defaultPreset = "e-ink-light";
-    };
-
     cursor = {
       theme = "miku";
       size = 50;
@@ -39,18 +35,6 @@
 
     keyboard = {
       layout = "fr,us";
-      switchOption = "grp:alts_toggle";
-    };
-
-    wallpaper = {
-      fitMode = "cover";
-      transitionDuration = 3000;
-
-      autorotate = {
-        enable = false;
-        folder = "/home/so/Pictures/wallpapers";
-        frequencyMinutes = 60;
-      };
     };
   };
 

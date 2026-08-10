@@ -1,17 +1,22 @@
 local ok, colors = pcall(require, "colors")
 if not ok then
-    colors = {
-        background = "#000000",
-        foreground = "#ffffff",
-        cursor     = "#ffffff",
-        color4     = "#888888",
-        color8     = "#444444",
-    }
+    colors = require("colors-fallback")
 end
 
 local function hex(c, alpha)
     alpha = alpha or "ff"
     return tonumber(alpha .. c:sub(2), 16)
+end
+
+local function darken(c, factor)
+    factor = factor or 0.8
+    local r = tonumber(c:sub(2, 3), 16)
+    local g = tonumber(c:sub(4, 5), 16)
+    local b = tonumber(c:sub(6, 7), 16)
+    r = math.floor(r * factor)
+    g = math.floor(g * factor)
+    b = math.floor(b * factor)
+    return string.format("#%02x%02x%02x", r, g, b)
 end
 
 hl.config({
@@ -56,7 +61,7 @@ hl.config({
         force_default_wallpaper = 0,
         disable_hyprland_logo   = true,
         disable_splash_rendering = true,
-        background_color = hex(colors.background),
+        background_color = hex(darken(colors.background)),
     },
 })
 

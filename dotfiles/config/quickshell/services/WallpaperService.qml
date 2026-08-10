@@ -49,13 +49,23 @@ Singleton {
         printErrors: false
 
         onLoaded: {
-            if (adapter.path !== "") {
-                root.currentWallpaper = adapter.path
-            }
+            if (!adapter.initialized) return
+            root.currentWallpaper = adapter.path
+            root.fitMode = adapter.fitMode
+            root.transitionDuration = adapter.transitionDuration
+            root.autorotateEnable = adapter.autorotateEnable
+            root.autorotateFolder = adapter.autorotateFolder
+            root.autorotateFrequencyMinutes = adapter.autorotateFrequencyMinutes
         }
 
         adapter: JsonAdapter {
+            property bool initialized: false
             property string path: ""
+            property string fitMode: "cover"
+            property int transitionDuration: 400
+            property bool autorotateEnable: false
+            property string autorotateFolder: ""
+            property int autorotateFrequencyMinutes: 30
         }
     }
 
@@ -73,6 +83,17 @@ Singleton {
         repeat: true
         triggeredOnStart: false
         onTriggered: root.rotateNow()
+    }
+
+    function syncState() {
+        stateFile.adapter.initialized = true
+        stateFile.adapter.path = root.currentWallpaper
+        stateFile.adapter.fitMode = root.fitMode
+        stateFile.adapter.transitionDuration = root.transitionDuration
+        stateFile.adapter.autorotateEnable = root.autorotateEnable
+        stateFile.adapter.autorotateFolder = root.autorotateFolder
+        stateFile.adapter.autorotateFrequencyMinutes = root.autorotateFrequencyMinutes
+        stateFile.writeAdapter()
     }
 
     function rebuildQueue() {
@@ -127,8 +148,7 @@ Singleton {
     function set(path) {
         if (path === "") return
         root.currentWallpaper = path
-        stateFile.adapter.path = path
-        stateFile.writeAdapter()
+        root.syncState()
 
         if (wallustProcess.running) {
             wallustProcess.pendingPath = path
@@ -141,11 +161,28 @@ Singleton {
     function setFit(mode) {
         if (root.validFitModes.indexOf(mode) === -1) return
         root.fitMode = mode
+        root.syncState()
     }
 
     function setTransition(ms) {
         if (ms < 0) return
         root.transitionDuration = ms
+        root.syncState()
+    }
+
+    function setAutorotateEnable(enable) {
+        root.autorotateEnable = enable
+        root.syncState()
+    }
+
+    function setAutorotateState(state) {
+        root.setAutorotateEnable(state === "on")
+    }
+
+    function setAutorotateFolder(folder) {
+        root.autorotateFolder = folder
+        root.rotationQueue = []
+        root.syncState()
     }
 
     function setAutorotateFrequency(minutes) {
@@ -153,6 +190,7 @@ Singleton {
         root.autorotateFrequencyMinutes = minutes
         rotationTimer.stop()
         rotationTimer.start()
+        root.syncState()
     }
 
     IpcHandler {
@@ -164,6 +202,11 @@ Singleton {
         function setTransition(ms: int): void { root.setTransition(ms) }
         function getTransition(): int { return root.transitionDuration }
         function rotateNow(): void { root.rotateNow() }
+        function setAutorotateEnable(enable: bool): void { root.setAutorotateEnable(enable) }
+        function getAutorotateEnable(): bool { return root.autorotateEnable }
+        function setAutorotateState(state: string): void { root.setAutorotateState(state) }
+        function setAutorotateFolder(folder: string): void { root.setAutorotateFolder(folder) }
+        function getAutorotateFolder(): string { return root.autorotateFolder }
         function setAutorotateFrequency(minutes: int): void { root.setAutorotateFrequency(minutes) }
         function getAutorotateFrequency(): int { return root.autorotateFrequencyMinutes }
     }
