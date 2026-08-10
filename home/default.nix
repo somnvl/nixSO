@@ -2,6 +2,7 @@
 {
   imports = [
     ./aliases.nix
+    ./cli.nix
     ./cursor.nix
     ./gtk.nix
     ./pkgs.nix

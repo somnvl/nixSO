@@ -181,6 +181,15 @@ Singleton {
         wallustProcess.running = true
     }
 
+    Connections {
+        target: WallpaperService
+        function onCurrentWallpaperChanged() {
+            if (root.paletteSource === "dynamic") {
+                root.applyDynamic()
+            }
+        }
+    }
+
     function setPreset(name) {
         root.activePreset = name
         root.paletteSource = "preset"
