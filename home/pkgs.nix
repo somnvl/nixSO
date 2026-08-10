@@ -6,7 +6,6 @@
     hyprshot
       grim
       slurp
-    wallust
 
   ]
   ++ lib.optionals profile.dev.devTools (with pkgs; [

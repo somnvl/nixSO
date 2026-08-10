@@ -1,0 +1,4 @@
+[templates]
+kitty.template = "kitty.template"
+kitty.target = "~/.config/kitty/colors.conf"
+kitty.pywal = true

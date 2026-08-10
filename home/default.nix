@@ -14,6 +14,7 @@
     ./apps/spicetify.nix
     ./apps/vesktop.nix
     ./apps/vscode.nix
+    ./apps/wallust.nix
     ./apps/zsh.nix
   ];
 
