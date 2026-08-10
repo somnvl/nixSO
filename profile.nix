@@ -47,7 +47,7 @@
       transitionDuration = 3000;
 
       autorotate = {
-        enable = true;
+        enable = false;
         folder = "/home/so/Pictures/wallpapers";
         frequencyMinutes = 60;
       };
