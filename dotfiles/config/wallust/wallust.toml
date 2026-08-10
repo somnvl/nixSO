@@ -2,3 +2,6 @@
 kitty.template = "kitty.template"
 kitty.target = "~/.config/kitty/colors.conf"
 kitty.pywal = true
+
+quickshell.template = "quickshell.template"
+quickshell.target = "~/.cache/wallust/quickshell-colors.json"

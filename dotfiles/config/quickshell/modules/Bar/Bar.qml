@@ -3,6 +3,7 @@ import Quickshell.Wayland
 import Quickshell.Services.UPower
 import QtQuick
 import QtQuick.Layouts
+import "../../services"
 
 Variants {
     model: Quickshell.screens
@@ -32,7 +33,7 @@ Variants {
 
             Text {
                 id: clock
-                color: "#c0caf5"
+                color: ColorService.foreground
                 font.pixelSize: 12
                 text: Qt.formatDateTime(new Date(), "HH:mm")
 
@@ -50,7 +51,7 @@ Variants {
             }
 
             Text {
-                color: "#c0caf5"
+                color: ColorService.foreground
                 font.pixelSize: 12
                 text: {
                     const battery = UPower.displayDevice
