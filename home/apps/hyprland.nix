@@ -13,8 +13,10 @@ in
     hl.on("hyprland.start", function()
         hl.exec_cmd("hyprctl plugin load ${scrolloverview}/lib/libscrolloverview.so")
         hl.exec_cmd("quickshell")
+        hl.exec_cmd("[ -f $HOME/.config/hypr/colors.lua ] || wallust cs $HOME/.config/wallust/colorschemes/${profile.customization.color.defaultPreset}.json && hyprctl reload")
     end)
   '';
+
 
   xdg.configFile."hypr/input.lua".text = ''
     hl.config({

@@ -5,3 +5,6 @@ kitty.pywal = true
 
 quickshell.template = "quickshell.template"
 quickshell.target = "~/.cache/wallust/quickshell-colors.json"
+
+hyprland.template = "hyprland.template"
+hyprland.target = "~/.config/hypr/colors.lua"

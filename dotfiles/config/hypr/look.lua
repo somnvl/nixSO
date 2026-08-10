@@ -1,3 +1,19 @@
+local ok, colors = pcall(require, "colors")
+if not ok then
+    colors = {
+        background = "#000000",
+        foreground = "#ffffff",
+        cursor     = "#ffffff",
+        color4     = "#888888",
+        color8     = "#444444",
+    }
+end
+
+local function hex(c, alpha)
+    alpha = alpha or "ff"
+    return tonumber(alpha .. c:sub(2), 16)
+end
+
 hl.config({
     general = {
         gaps_in  = 5,
@@ -6,6 +22,11 @@ hl.config({
         resize_on_border = false,
         allow_tearing = false,
         layout = "scrolling",
+
+        col = {
+            active_border   = hex(colors.color4),
+            inactive_border = hex(colors.color8),
+        },
     },
     decoration = {
         rounding       = 18,
@@ -35,7 +56,7 @@ hl.config({
         force_default_wallpaper = 0,
         disable_hyprland_logo   = true,
         disable_splash_rendering = true,
-        background_color = 0xff000000,
+        background_color = hex(colors.background),
     },
 })
 
