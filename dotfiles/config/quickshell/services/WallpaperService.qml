@@ -108,11 +108,34 @@ Singleton {
         root.set(path)
     }
 
+    Process {
+        id: wallustProcess
+        command: ["wallust", "run", "-s"]
+
+        onRunningChanged: {
+            if (!running && wallustProcess.pendingPath !== "") {
+                const next = wallustProcess.pendingPath
+                wallustProcess.pendingPath = ""
+                wallustProcess.command = ["wallust", "run", "-s", next]
+                wallustProcess.running = true
+            }
+        }
+
+        property string pendingPath: ""
+    }
+
     function set(path) {
         if (path === "") return
         root.currentWallpaper = path
         stateFile.adapter.path = path
         stateFile.writeAdapter()
+
+        if (wallustProcess.running) {
+            wallustProcess.pendingPath = path
+        } else {
+            wallustProcess.command = ["wallust", "run", "-s", path]
+            wallustProcess.running = true
+        }
     }
 
     function setFit(mode) {
