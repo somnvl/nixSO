@@ -1,6 +1,8 @@
 { pkgs, lib, profile, ... }:
 let
-  mactahoe-icon-theme = pkgs.callPackage ./packages/mactahoe-icon-theme.nix { };
+  mactahoe-icon-theme = pkgs.callPackage ./packages/mactahoe-icon-theme.nix {
+    themeVariants = [ "grey" ];
+  };
 in
 {
   home.packages = [ mactahoe-icon-theme ];
@@ -14,7 +16,7 @@ in
     };
 
     iconTheme = {
-      name = "MacTahoe-dark";
+      name = "MacTahoe-grey-dark";
       package = mactahoe-icon-theme;
     };
   };
@@ -22,6 +24,6 @@ in
   dconf.settings."org/gnome/desktop/interface" = {
     color-scheme = "prefer-dark";
     gtk-theme = "adw-gtk3-dark";
-    icon-theme = "MacTahoe-dark";
+    icon-theme = "MacTahoe-grey-dark";
   };
 }
