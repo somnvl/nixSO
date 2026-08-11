@@ -140,7 +140,7 @@
       echo 'themesource                   get palette source: preset | dynamic'
     '')
 
-    (writeShellScriptBin "post-theme-apply" ''
+    (writeShellScriptBin "restart-gtk-apps" ''
       was_open="$(hyprctl clients -j | jq -e '[.[] | select(.class=="org.gnome.Nautilus")] | length > 0')"
 
       pkill -f nautilus || true
