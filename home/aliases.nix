@@ -11,4 +11,13 @@
     vg  = "valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes";  # vg ./main
     p3  = "python3";                    # p3 script.py
     cx  = "chmod +x";                   # cx script.sh
-  };}
+  };
+
+  programs.zsh.initContent = ''
+    logout() {
+      if uwsm stop 2>&1 | grep -q "not running"; then
+        hyprctl dispatch 'hl.dsp.exit()'
+      fi
+    }
+  '';
+}

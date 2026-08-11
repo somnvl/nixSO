@@ -7,7 +7,7 @@ in
     enable = true;
 
     theme = spicePkgs.themes.text;
-    colorScheme = "TokyoNight";
+    colorScheme = "Spotify";
 
     enabledExtensions = with spicePkgs.extensions; [
       adblock

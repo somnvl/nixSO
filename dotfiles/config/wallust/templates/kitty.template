@@ -1,6 +1,9 @@
 background {background}
 foreground {foreground}
 cursor     {cursor}
+url_color  {color4}
+selection_background {cursor}
+selection_foreground {background}
 
 color0  {color0}
 color1  {color1}

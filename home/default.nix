@@ -8,13 +8,13 @@
     ./pkgs/apps.nix
     ./pkgs/dev.nix
     ./apps/git.nix
+    ./apps/btop.nix
     ./apps/hyprland.nix
     ./apps/hyprlock.nix
     ./apps/kitty.nix
     ./apps/nautilus.nix
     ./apps/quickshell.nix
     ./apps/spicetify.nix
-    ./apps/vesktop.nix
     ./apps/vscode.nix
     ./apps/wallust.nix
     ./apps/zsh.nix

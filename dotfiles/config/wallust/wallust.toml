@@ -14,3 +14,15 @@ vscode.target = "~/.cache/wallust/colors.json"
 
 vscode2.template = "vscode"
 vscode2.target = "~/.cache/wallust/colors"
+
+btop.template = "btop.template"
+btop.target = "~/.config/btop/themes/wallust.theme"
+
+gtk3.template = "gtk.template"
+gtk3.target = "~/.config/gtk-3.0/gtk.css"
+
+gtk4.template = "gtk.template"
+gtk4.target = "~/.config/gtk-4.0/gtk.css"
+
+vesktop.template = "vesktop.template"
+vesktop.target = "~/.config/vesktop/themes/wallust.theme.css"

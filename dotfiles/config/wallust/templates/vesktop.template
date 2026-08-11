@@ -1,0 +1,61 @@
+.visual-refresh.theme-dark,
+.visual-refresh .theme-dark,
+.visual-refresh.theme-light,
+.visual-refresh .theme-light {
+    --brand-500: {{color4}} !important;
+    --text-default: {{foreground}};
+    --text-muted: {{color8}} !important;
+    --text-link: {{color4}} !important;
+    --text-strong: {{foreground}} !important;
+    --text-subtle: {{color7}};
+
+    --background-base-lowest: {{background}} !important;
+    --background-base-lower: {{background}} !important;
+    --background-base-low: {{background}} !important;
+    --background-secondary-alt: {{background}} !important;
+    --background-accent: {{color8}} !important;
+    --background-surface-high: {{color0}} !important;
+    --background-surface-higher: {{color0}} !important;
+    --background-surface-highest: {{color8}} !important;
+    --bg-surface-raised: {{background}};
+    --home-background: {{background}};
+    --chat-background: {{background}};
+    --chat-background-default: {{background}};
+    --chat-border: {{background}};
+    --chat-text-muted: {{color8}};
+
+    --channels-default: {{color7}} !important;
+    --channel-icon: {{color7}} !important;
+    --channeltextarea-background: {{color0}};
+
+    --interactive-normal: {{color7}};
+    --interactive-hover: {{foreground}};
+    --interactive-active: {{color4}};
+    --interactive-muted: {{color8}};
+    --interactive-icon-default: {{foreground}} !important;
+    --interactive-icon-hover: {{foreground}};
+    --interactive-icon-active: {{foreground}};
+    --interactive-text-default: {{foreground}} !important;
+    --interactive-text-hover: {{foreground}};
+    --interactive-text-active: {{foreground}};
+
+    --background-mod-subtle: {{color0}} !important;
+    --background-mod-normal: {{color0}};
+    --background-mod-strong: {{color8}} !important;
+
+    --modal-background: {{background}} !important;
+    --modal-footer-background: {{background}};
+    --card-background-default: {{color0}} !important;
+
+    --input-background-default: {{color0}};
+    --input-text-default: {{foreground}};
+    --input-border-default: {{color8}};
+    --input-placeholder-text-default: {{color7}};
+
+    --scrollbar-thin-thumb: {{color4}};
+    --scrollbar-auto-thumb: {{color4}};
+    --scrollbar-auto-track: {{background}};
+
+    --mention-foreground: {{color4}};
+    --mention-background: {{color0}};
+}

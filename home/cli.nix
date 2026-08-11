@@ -107,7 +107,8 @@
       echo 'wallrotatefreq <minutes>      autorotate interval'
       echo 'wallrotatefreqget             get autorotate interval'
       echo 'wallnext                      rotate to the next wallpaper now'
-      echo 'wallreset                     reset fit/transition/hide/autorotate to config defaults'
+      echo 'walltheme                     switch to dynamic mode (extract from current wallpaper)'
+      echo 'wallreset                     reset wallpaper + fit/transition/hide/autorotate to config defaults'
     '')
 
     (writeShellScriptBin "themeset" ''
@@ -120,6 +121,9 @@
       exec qs ipc call color saveCurrentAsPreset "$1"
     '')
     (writeShellScriptBin "themewall" ''
+      exec qs ipc call color setPaletteSource dynamic
+    '')
+    (writeShellScriptBin "walltheme" ''
       exec qs ipc call color setPaletteSource dynamic
     '')
     (writeShellScriptBin "themesource" ''
@@ -136,10 +140,17 @@
       echo 'themesource                   get palette source: preset | dynamic'
     '')
 
-    (writeShellScriptBin "logout" ''
-      if uwsm stop 2>&1 | grep -q "not running"; then
-        hyprctl dispatch 'hl.dsp.exit()'
+    (writeShellScriptBin "post-theme-apply" ''
+      was_open="$(hyprctl clients -j | jq -e '[.[] | select(.class=="org.gnome.Nautilus")] | length > 0')"
+
+      pkill -f nautilus || true
+
+      if [ "$was_open" = "true" ]; then
+        nautilus &
+        disown
       fi
+
+      pkill -SIGUSR1 kitty || true
     '')
   ];
 }

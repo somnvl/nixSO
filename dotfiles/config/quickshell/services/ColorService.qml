@@ -164,6 +164,17 @@ Singleton {
     Process {
         id: wallustProcess
         command: ["true"]
+
+        onRunningChanged: {
+            if (!running) {
+                gtkRestartProcess.running = true
+            }
+        }
+    }
+
+    Process {
+        id: gtkRestartProcess
+        command: ["restart-gtk-apps"]
     }
 
     function applyPreset(name) {
