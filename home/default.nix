@@ -9,10 +9,13 @@
     ./pkgs/dev.nix
     ./apps/git.nix
     ./apps/btop.nix
+    ./apps/celluloid.nix
     ./apps/hyprland.nix
     ./apps/hyprlock.nix
     ./apps/kitty.nix
+    ./apps/loupe.nix
     ./apps/nautilus.nix
+    ./apps/papers.nix
     ./apps/quickshell.nix
     ./apps/spicetify.nix
     ./apps/vscode.nix
