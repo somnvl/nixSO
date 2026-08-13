@@ -38,11 +38,17 @@ Variants {
                 text: Qt.formatDateTime(new Date(), "HH:mm")
 
                 Timer {
-                    interval: 1000
+                    id: clockTimer
                     running: true
                     repeat: true
                     triggeredOnStart: true
-                    onTriggered: clock.text = Qt.formatDateTime(new Date(), "HH:mm")
+                    interval: 60000 - (Date.now() % 60000)
+
+                    onTriggered: {
+                        clock.text = Qt.formatDateTime(new Date(), "HH:mm")
+                        // re-sync so we always fire right at the start of the next minute
+                        interval = 60000
+                    }
                 }
             }
 

@@ -63,6 +63,8 @@ in
   xdg = {
     dataFile."nautilus-python/extensions/set-background-extension.py".source =
       ../packages/set-background-extension.py;
+    dataFile."nautilus-python/extensions/track-last-path-extension.py".source = 
+      ../packages/track-last-path-extension.py;
 
     mimeApps = {
       enable = true;

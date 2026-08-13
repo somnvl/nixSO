@@ -41,6 +41,10 @@ Variants {
                 }
             }
 
+            function isAnimated(src) {
+                return src.toLowerCase().endsWith(".gif")
+            }
+
             function doSwap() {
                 const path = WallpaperService.currentWallpaper
                 const src = path !== "" ? "file://" + path : ""
@@ -53,13 +57,17 @@ Variants {
                 layers.usingA = !layers.usingA
             }
 
-            AnimatedImage {
+            // Static images use a plain Image (decode once, idle after that).
+            // GIFs use AnimatedImage (keeps its own frame timer running) -
+            // only instantiated when the current source actually needs it,
+            // so idle power draw stays at the Image baseline for the common case.
+            Loader {
                 id: layerA
                 anchors.fill: parent
-                fillMode: layers.fillMode
-                asynchronous: true
+                property string source: ""
                 opacity: layers.usingA ? 1 : 0
                 visible: opacity > 0
+                sourceComponent: layers.isAnimated(source) ? animatedCompA : staticCompA
 
                 Behavior on opacity {
                     NumberAnimation {
@@ -77,17 +85,37 @@ Variants {
                             layers.needsSwap = false
                             layers.doSwap()
                         }
+                    }
+                }
+
+                Component {
+                    id: staticCompA
+                    Image {
+                        anchors.fill: parent
+                        fillMode: layers.fillMode
+                        asynchronous: true
+                        source: layerA.source
+                    }
+                }
+
+                Component {
+                    id: animatedCompA
+                    AnimatedImage {
+                        anchors.fill: parent
+                        fillMode: layers.fillMode
+                        asynchronous: true
+                        source: layerA.source
                     }
                 }
             }
 
-            AnimatedImage {
+            Loader {
                 id: layerB
                 anchors.fill: parent
-                fillMode: layers.fillMode
-                asynchronous: true
+                property string source: ""
                 opacity: layers.usingA ? 0 : 1
                 visible: opacity > 0
+                sourceComponent: layers.isAnimated(source) ? animatedCompB : staticCompB
 
                 Behavior on opacity {
                     NumberAnimation {
@@ -105,6 +133,26 @@ Variants {
                             layers.needsSwap = false
                             layers.doSwap()
                         }
+                    }
+                }
+
+                Component {
+                    id: staticCompB
+                    Image {
+                        anchors.fill: parent
+                        fillMode: layers.fillMode
+                        asynchronous: true
+                        source: layerB.source
+                    }
+                }
+
+                Component {
+                    id: animatedCompB
+                    AnimatedImage {
+                        anchors.fill: parent
+                        fillMode: layers.fillMode
+                        asynchronous: true
+                        source: layerB.source
                     }
                 }
             }

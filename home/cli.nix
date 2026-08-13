@@ -141,12 +141,17 @@
     '')
 
     (writeShellScriptBin "restart-gtk-apps" ''
+      state_file="$HOME/.local/state/nixso/nautilus-last-path"
       was_open="$(hyprctl clients -j | jq -e '[.[] | select(.class=="org.gnome.Nautilus")] | length > 0')"
 
       pkill -f nautilus || true
 
       if [ "$was_open" = "true" ]; then
-        nautilus &
+        if [ -f "$state_file" ]; then
+          nautilus "$(cat "$state_file")" &
+        else
+          nautilus &
+        fi
         disown
       fi
 
