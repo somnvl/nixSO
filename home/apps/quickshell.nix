@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, profile, ... }:
 {
   home.packages = [ pkgs.quickshell ];
 
@@ -6,8 +6,6 @@
     QS_NO_RELOAD_POPUP = "1";
   };
 
-  xdg.configFile."quickshell" = {
-    source = ../../dotfiles/config/quickshell;
-    recursive = true;
-  };
+  xdg.configFile."quickshell".source =
+    config.lib.file.mkOutOfStoreSymlink "${profile.user.repoPath}/dotfiles/config/quickshell";
 }

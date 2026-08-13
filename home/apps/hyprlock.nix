@@ -1,10 +1,11 @@
-{ pkgs, ... }:
+{ config, pkgs, profile, ... }:
 {
   home.packages = [ pkgs.hypridle ];
 
   programs.hyprlock.enable = true;
 
-  xdg.configFile."hypr/hyprlock.conf".source = ../../dotfiles/config/hyprlock/hyprlock.conf;
+  xdg.configFile."hypr/hyprlock.conf".source =
+    config.lib.file.mkOutOfStoreSymlink "${profile.user.repoPath}/dotfiles/config/hyprlock/hyprlock.conf";
 
   services.hypridle = {
     enable = true;

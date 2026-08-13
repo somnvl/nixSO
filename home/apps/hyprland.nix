@@ -1,10 +1,12 @@
-{ pkgs, profile, ... }:
+{ config, pkgs, profile, ... }:
 let
   scrolloverview = pkgs.callPackage ../packages/hyprland-scroll-overview.nix { };
 
   colorDefaults = builtins.fromJSON (builtins.readFile ../../dotfiles/config/quickshell/config-defaults/color.json);
   fallbackPreset = builtins.fromJSON (builtins.readFile
     ../../dotfiles/config/wallust/colorschemes/${colorDefaults.activePreset}.json);
+
+  hyprDots = "${profile.user.repoPath}/dotfiles/config/hypr";
 in
 {
   xdg.configFile."hypr/env.lua".text = ''
@@ -49,12 +51,12 @@ in
     })
   '';
 
-  xdg.configFile."hypr/animations.lua".source     = ../../dotfiles/config/hypr/animations.lua;
-  xdg.configFile."hypr/binds.lua".source          = ../../dotfiles/config/hypr/binds.lua;
-  xdg.configFile."hypr/gestures.lua".source       = ../../dotfiles/config/hypr/gestures.lua;
-  xdg.configFile."hypr/hyprland.lua".source       = ../../dotfiles/config/hypr/hyprland.lua;
-  xdg.configFile."hypr/look.lua".source           = ../../dotfiles/config/hypr/look.lua;
-  xdg.configFile."hypr/programs.lua".source       = ../../dotfiles/config/hypr/programs.lua;
-  xdg.configFile."hypr/scrolloverview.lua".source = ../../dotfiles/config/hypr/scrolloverview.lua;
-  xdg.configFile."hypr/windowrules.lua".source    = ../../dotfiles/config/hypr/windowrules.lua;
+  xdg.configFile."hypr/animations.lua".source     = config.lib.file.mkOutOfStoreSymlink "${hyprDots}/animations.lua";
+  xdg.configFile."hypr/binds.lua".source          = config.lib.file.mkOutOfStoreSymlink "${hyprDots}/binds.lua";
+  xdg.configFile."hypr/gestures.lua".source       = config.lib.file.mkOutOfStoreSymlink "${hyprDots}/gestures.lua";
+  xdg.configFile."hypr/hyprland.lua".source       = config.lib.file.mkOutOfStoreSymlink "${hyprDots}/hyprland.lua";
+  xdg.configFile."hypr/look.lua".source           = config.lib.file.mkOutOfStoreSymlink "${hyprDots}/look.lua";
+  xdg.configFile."hypr/programs.lua".source       = config.lib.file.mkOutOfStoreSymlink "${hyprDots}/programs.lua";
+  xdg.configFile."hypr/scrolloverview.lua".source = config.lib.file.mkOutOfStoreSymlink "${hyprDots}/scrolloverview.lua";
+  xdg.configFile."hypr/windowrules.lua".source    = config.lib.file.mkOutOfStoreSymlink "${hyprDots}/windowrules.lua";
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, profile, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -28,5 +28,6 @@
     '';
   };
 
-  home.file.".p10k.zsh".source = ../../dotfiles/config/p10k/.p10k.zsh;
+  home.file.".p10k.zsh".source =
+    config.lib.file.mkOutOfStoreSymlink "${profile.user.repoPath}/dotfiles/config/p10k/.p10k.zsh";
 }
